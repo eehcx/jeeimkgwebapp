@@ -1,0 +1,71 @@
+
+{% block footer %}
+<footer class=" footer">
+    <div class="footer__addr">
+        <div class="footer__logo">
+        <img src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/images/footer-logo.png" alt="Logo de la organización Jóvenes Emprendedores e Innovadores">
+        </div>
+        <h2>Contacto</h2>
+        <address>
+        1010 Avenue, sw 54321, chandigarh<br>
+        <a class="footer__btn" href="mailto:jeeimkg@gmail.com">Email Us</a>
+        </address>
+    </div>
+    <ul class="footer__nav">
+        <li class="nav__item">
+        <h2 class="nav__title">Redes</h2>
+        <ul class="nav__ul">
+            <li>
+            <a href="https://www.facebook.com/jeeimkg" target="_BLANK">Facebook</a>
+            </li>
+            <li>
+            <a href="https://www.instagram.com/jeeimkg" target="_BLANK">Instagram</a>
+            </li>
+            <li>
+            <a href="https://www.tiktok.com/@jeeimkg" target="_BLANK">TikTok</a>
+            </li>
+        </ul>
+        </li>
+        <li class="nav__item nav__item--extra">
+        <h2 class="nav__title">Enlaces Útiles</h2>
+        <ul class="nav__ul nav__ul--extra">
+            <li>
+            <a href="{% url 'clientes' %}">Nuestros Clientes</a>
+            </li>
+            <li>
+                <a href="{% url 'productos' %}">Nuestros Productos</a>
+            </li>
+            <li>
+            <a href="{% url 'fundacion' %}">Nuestra Fundación</a>
+            </li>
+            <li>
+            <a href="{% url 'afiliacion' %}">Empresas Afiliadas</a>
+            </li>
+            <li>
+            <a href="{% url 'acerca' %}">Nuestra Trayectoría</a>
+            </li>
+            <li>
+            <a href="{% url 'conferencias' %}">Conferencias</a>
+            </li>
+        </ul>
+        </li>
+        <li class="nav__item">
+        <h2 class="nav__title">Legal</h2>
+        <ul class="nav__ul">
+            <li>
+            <a href="{% url 'privacidad' %}">Politicas de Privacidad</a>
+            </li>
+            <li>
+            <a href="{% url 'terminos' %}">Terminos de Uso</a>
+            </li>
+            <li>
+            <a href="{% url 'mapa' %}">Mapa del Sitio</a>
+            </li>
+        </ul>
+        </li>
+    </ul>
+    <div class="legal">
+        <p>Copyright &copy; 2023, All Right Reserved <a href="{% url 'index' %}">jeeimkg</a></p>
+    </div>
+</footer>
+{% endblock %}

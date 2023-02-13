@@ -1,0 +1,118 @@
+/*Navigation classes*/
+
+nav {
+    width: 100%;
+    height: 70px;
+    cursor: pointer;
+    z-index: 10;
+    padding: 20px 60px 0px 60px; /*Arriba, derecha, abajo, izquierda*/
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all .5s;
+}
+
+#navigation {
+    font-family: "Be Vietnam Pro", sans-serif;
+}
+
+#navigation li {
+    display: inline-block;
+    transition: .7s;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+nav ul li a:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 1.5px;
+    left: 50%;
+    border-radius: 5px;
+    position: absolute;
+    background: #171717;
+    transition: width 0.7s ease 0s, left 0.7s ease 0s;
+    width: 0;
+}
+
+nav ul li a:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+.navbar-list {
+    display: block;
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+  }
+
+.navbar-link{
+    color: #171717;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.navbar-link:link,
+.navbar-link:visited {
+    display: inline-block;
+    font-size: 13px;
+    margin-top: 10px;
+    margin-left: 60px; /*margen entre palabras*/
+    font-weight: 600;
+}
+
+/*navbar al hacer scroll up*/
+
+nav.down {
+    background-color:#ffffff;
+    color:  #090909;
+}
+
+nav.down .navbar-list li a {
+    color: #090909;
+}
+
+nav.down ul li a:after {
+    background: #090909;
+}
+
+/*Logo de navbar*/
+
+.logo a {
+    text-decoration: none;
+    margin-bottom: 60px;
+}
+
+.logo a h1 {
+    font-size: 30px;
+    color: #171717;
+}
+
+/*logo para scroll up*/
+
+nav.down .logo h1 {
+    color: #090909;
+}
+
+/*Mobile navbar*/
+
+#toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .navbar-list {
+        display: none;
+    }
+}

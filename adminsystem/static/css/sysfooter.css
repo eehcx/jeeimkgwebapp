@@ -1,0 +1,31 @@
+/*Tipografía de la marca*/
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@300;400;500;700&display=swap");
+/*Tipografía secundaria*/
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@200;300;400;500&display=swap");
+
+
+/*footer classes*/
+
+.footer {
+    font-family: "Be Vietnam Pro", sans-serif;
+    color: #595959;
+}
+
+.legal {
+    font-family: "Be Vietnam Pro", sans-serif;
+    padding: 1%;
+    display: grid;
+    place-items: center;
+    color: #595959;
+    font-size: 15px;
+}
+
+/*logo jeeimkg*/
+
+.legal p a{
+    font-family: "Alegreya Sans SC", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #595959;
+    text-decoration: none;
+}

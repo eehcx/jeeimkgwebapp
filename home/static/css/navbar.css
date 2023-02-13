@@ -1,0 +1,111 @@
+/*Tipografía de la marca*/
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@300;400;500;700&display=swap");
+
+body {
+    font-family: "Alegreya Sans SC", sans-serif;
+}
+
+
+/*Navigation classes*/
+nav {
+    width: 100%;
+    height: 70px;
+    cursor: pointer;
+    z-index: 10;
+    padding: 20px 60px 0px 60px;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all .5s;
+}
+
+#navigation {
+    font-family: "Be Vietnam Pro", sans-serif;
+}
+
+#navigation li {
+    display: inline-block;
+    transition: .7s;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+nav ul li a:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 1.5px;
+    left: 50%;
+    border-radius: 5px;
+    position: absolute;
+    background: #ffffff;
+    transition: width 0.7s ease 0s, left 0.7s ease 0s;
+    width: 0;
+}
+
+nav ul li a:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+.navbar-list {
+    display: flex;
+    list-style: none;
+}
+
+.navbar-link{
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.navbar-link:link,
+.navbar-link:visited {
+    display: inline-block;
+    font-size: 13px;
+    margin-top: 10px;
+    margin-left: 60px; /*margen entre palabras*/
+    font-weight: 600;
+}
+
+/*navbar al hacer scroll up*/
+
+nav.down {
+    background-color:#090909;
+    color:  #fff;
+}
+
+nav.down .navbar-list li a {
+    color: #ffffff;
+}
+
+nav.down ul li a:after {
+    background: #090909;
+}
+
+/*Logo de navbar*/
+
+.logo a {
+    text-decoration: none;
+    margin-bottom: 60px;
+}
+
+.logo a h1 {
+    font-size: 25px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+nav.down .logo h1 {
+    color: #ffffff;
+}
+
+/*Mobile navbar*/

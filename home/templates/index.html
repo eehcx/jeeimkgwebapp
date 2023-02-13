@@ -1,0 +1,101 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %}JEEIMKG | Design, Creation and Development Agency{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" type="text/css" href="{% static '/css/styles.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/css/footer.css' %}">
+{% endblock %}
+
+{% block js %}
+  <script type="text/javascript" src="{% static '/js/navbar.js' %}"></script>
+{% endblock %}
+
+{% block nav %}
+  {% include "layouts/navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<header id="header">
+  <object data="navigation.html" type="text/html"></object>
+  <section class="home-header" id="home">
+    <div>
+      <div class="content__container">
+        <p>Diseñamos y<br>Construimos</p>
+        <b class="keyword" id="keyword">
+          <span>
+            estrategias<br />
+            productos<br />
+            experiencias
+          </span>
+        </b>
+      </div>
+    </div>
+  </section>
+</header>
+<!-- Fin - Header -->
+
+<main>
+  <section id="about" class="about-content">
+
+  </section>
+
+  <section id="work" class="work-content">
+    <div class="txt-title">nos especializamos en</div>
+    <div class="row">
+      <div>
+        <a href="" class="goBtn" target="_BLANK">Branding & Indentidad
+          <span class="btnInfo highlight">▸ ver más</span>
+        </a>
+        <a href="" class="goBtn" target="_BLANK">Desarrollo de Aplicaciones
+          <span class="btnInfo highlight">▸ ver más</span>
+        </a>
+        <a href="" class="goBtn" target="_BLANK">Contenido Audiovisual
+          <span class="btnInfo highlight">▸ ver más</span>
+        </a>
+        <a href="" class="goBtn" target="_BLANK">ADS & Spots Publicitarios
+          <span class="btnInfo highlight">▸ ver más</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="opinions" class="opinions-content">
+    <div>
+      <p class="txt-opinions">Las marcas que respetan la cultura, la naturaleza
+        y la inclusión conquistarán el mundo.
+      </p>
+      <h2 class="title-opinions">CON ELLOS <br> NOS ASOCIAMOS</h2>
+      <div class="logo-container">
+        <img src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/images/opiniones/gray/nacajucanews.png" alt="Logo 1">
+        <img src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/images/opiniones/gray/trigmar.png" alt="Logo 2">
+        <img src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/images/opiniones/gray/eehcx.png" alt="Logo 3">
+        <img src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/images/opiniones/gray/joeExpeditions.png" alt="Logo 4">
+      </div>
+    </div>
+  </section>
+
+  <section id="products" class="products-content">
+    <p class="txt-opinions">De igual forma hemos comprobado que muchos 
+      negocios crecen en el momento en el momento en que estos se adaptan al mundo digital
+    </p>
+    <h2 class="title-opinions">CONOCE NUESTRAS <br> HERRAMIENTAS</h2>
+    <div class="content-product">
+
+    </div>
+  </section>
+
+  <section id="contact" class="contact-content">
+    <div>
+      <div class="info-join">
+        <h2>hablemos<a class="btn-join" href="contacto/">contacto</a></h2>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}
+
+{% block footer %}
+  {% include "layouts/footer.html" %}
+{% endblock %}

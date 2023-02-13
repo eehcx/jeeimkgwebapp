@@ -1,0 +1,100 @@
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static '/css/sidebar.css' %}">
+{% endblock %}
+
+
+{% block sidebar %}
+<div class="area"></div>
+<nav class="main-menu">
+    <ul>
+        <li>
+            <a href="{% url 'adminsystem' %}">
+                <i class="fa fa-home fa-2x"></i>
+                <span class="nav-text">
+                    Home
+                </span>
+            </a>
+            
+        </li>
+        <li class="has-subnav">
+            <a href="{% url 'profile' %}">
+                <i class="fa fa-user"></i>
+                <span class="nav-text">
+                    Profile
+                </span>
+            </a>
+            
+        </li>
+        <li class="has-subnav">
+            <a href="{% url 'contactClient' %}">
+                <i class="fa fa-inbox"></i>
+                <span class="nav-text">
+                    Client contact
+                </span>
+            </a>
+            
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-building-o fa-2x"></i>
+                <span class="nav-text">
+                    Fixed customers
+                </span>
+            </a>
+        </li>
+        <li class="has-subnav">
+            <a href="#">
+                <i class="fa fa-credit-card"></i>
+                <span class="nav-text">
+                    Advertising Budget
+                </span>
+            </a>
+        </li>
+        <li class="has-subnav">
+            <a href="#">
+                <i class="fa fa-suitcase"></i>
+                <span class="nav-text">
+                    Employers
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-folder"></i>
+                <span class="nav-text">
+                    Customer Projects
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-sitemap"></i>
+                <span class="nav-text">
+                    Organization Divisions
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'configuration' %}">
+                <i class="fa fa-cog"></i>
+                <span class="nav-text">
+                    Configuration
+                </span>
+            </a>
+        </li>
+    </ul>
+
+    <ul class="logout">
+        <li>
+            <a href="{% url 'login' %}">
+                    <i class="fa fa-power-off fa-2x"></i>
+                <span class="nav-text">
+                    Logout
+                </span>
+            </a>
+        </li>  
+    </ul>
+</nav>
+{% endblock %}

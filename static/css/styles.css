@@ -1,0 +1,321 @@
+@charset "ISO-8859-1";
+
+/* Fuentes
+********************************************************************* */
+
+/*Tipografía de la marca*/
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@300;400;500;700&display=swap");
+/*Tipografía secundaria*/
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@200;300;400;500&display=swap");
+/*Para uso unico*/
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+/* Base Styles
+********************************************************************* */
+
+body,
+html {
+  height: 100%;
+}
+
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Alegreya Sans SC", sans-serif;
+  background-color: #efefef;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+::selection {
+  background: #294899;
+  color: #fff;
+}
+
+/* Container Styles
+********************************************************************* */
+
+/*Home - Header classes*/
+
+section.home-header {
+  margin: 0%;
+  padding: 0%;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  flex-direction: column;
+  background-color: #fff;
+  line-height: 90px;
+}
+
+section.home-header p {
+  text-transform: uppercase;
+  line-height: 110px;
+  letter-spacing: 2.6px;
+}
+
+.content__container {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 400;
+  font-size: 90px;
+  text-decoration: none;
+  overflow: hidden;
+  float: left;
+  color: black;
+  margin: 200px 0px 0px 30px; /*Arriba, derecha, abajo, izquierda*/
+  padding: 0 40px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;    
+  user-select: none;
+}
+
+.content__container p a {
+  letter-spacing: normal;
+}
+
+.keyword {
+  font-size: 90px;
+  line-height: 90px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+b {
+  float: left;
+  overflow: hidden;
+  position: relative;
+  height: 90px;
+}
+
+b span {
+  display: inline-block;
+  color: #bababa;
+  position: relative;
+  white-space: nowrap;
+  top: 0;
+  left: 0;
+  animation: move 20s;
+  animation-iteration-count: infinite;
+  animation-delay: 4s;
+}
+
+@keyframes move {
+  0% {
+    top: 0px;
+  }
+
+  20% {
+    top: -90px;
+  }
+
+  40% {
+    top: -180px;
+  }
+
+  80% {
+    top: -90px;
+  }
+
+  100% {
+    top: 0px;
+  }
+
+}
+
+/*About content classes*/
+
+section.about-content{
+  background-image: url("https://jeeimkg-static.s3.us-west-1.amazonaws.com/images/secondary.jpg");
+  background-size: cover;
+  /*background-position: center;*/
+  min-height: 120vmin;
+  max-width: 100%;
+  /*Arriba, derecha, abajo, izquierda*/
+  padding: 50px 0px 50px 0px;
+}
+
+/*work content classes*/
+
+.work-content {
+  background-image: url("https://jeeimkg-static.s3.us-west-1.amazonaws.com/images/fondo-work.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 120vmin;
+  width: 100%;
+}
+
+.work-content {
+  left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 0;
+}
+
+.work-content a {
+  text-decoration: none;
+}
+
+div.txt-title{
+  font-family: "Alegreya Sans SC", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #171717;
+  padding-top: 140px;
+  padding-left: 70px;
+  margin-bottom: 90px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.row{
+  font-family: "Be Vietnam Pro", sans-serif;
+    margin-top: 70px;
+      padding-left: 70px;
+      padding-bottom: 70px;
+      color: #FFF;
+}
+
+.goBtn {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #090909;
+  font-weight: normal;
+  line-height: 90px;
+  font-size: 7vmin;
+  text-align: left;
+  letter-spacing: -.06em;
+  transition: all .2s ease-in-out;
+}
+
+.btnInfo {
+  font-size: 3vmin;
+  text-transform: lowercase;
+  letter-spacing: 0;
+  font-weight: normal;
+  padding-left: -10vw;
+  opacity: 0;
+  transition: all .9s ease;
+}
+
+.goBtn:hover {
+  text-decoration: none;
+  padding-left: 2.5vmax;
+  color: #090909b3;
+}
+
+.goBtn:hover .btnInfo {
+  opacity: 1;
+  padding-left: 3vmin;
+}
+
+.highlight {
+  color: #090909;
+}
+
+/*opinions classes*/
+
+.opinions-content {
+  height: 130vh;
+  width: 100%;
+  background-color: #efefef;
+}
+
+.title-opinions{
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 400;
+  font-size: 50px;
+  padding: 100px 60px 50px 60px;
+}
+
+.txt-opinions {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 400;
+  font-size: 50px;
+  padding: 100px 60px 0px 60px; /*Arriba, derecha, abajo, izquierda*/
+  color: #a6a6a6;
+}
+
+.logo-container {
+  padding-left: 60px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.logo-container img {
+  padding-right: 40px;
+  filter: grayscale(100%) brightness(90%);
+}
+
+img{
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;    
+  user-select: none;
+}
+
+/*products classes*/
+
+section.products-content {
+  height: 100%;
+  width: 100%;
+}
+
+.content-product{
+  background-image: url("https://jeeimkg-static.s3.us-west-1.amazonaws.com/images/svg/horgan.svg");
+  background-size: cover;
+  background-position: center;
+  height: 130vh;
+  width: 100%;
+}
+
+.products-content {
+  height: 1000px;
+  width: 100%;
+}
+
+/*contact classes*/
+
+.contact-content {
+  font-family: "Be Vietnam Pro", sans-serif;
+  height: 100%;
+  width: 100%;
+  background-color: #090909;
+}
+
+.info-join {
+  padding: 60px 0px 60px 60px;
+  font-weight: 500;
+  font-size: 60px;
+  text-transform: uppercase;
+  line-height: 200px;
+  color: #161616;
+  text-align: center;
+}
+
+.btn-join {
+  padding-left: 60px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #bababa;
+  transition: all 1s;
+}
+
+.btn-join:hover {
+  color: #cc1517;
+}
+
+/* Responsive Styles
+********************************************************************* */

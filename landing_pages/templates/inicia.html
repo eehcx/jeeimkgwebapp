@@ -1,0 +1,80 @@
+{% extends "layouts/baseForm.html" %}
+{% load static %}
+    
+    {% block title %}Inicia con nosotros | JEEIMKG{% endblock %}
+    
+    {% block css %}
+    <link rel="stylesheet" href="{% static '/css/inicia.css' %}">
+    <link rel="stylesheet" href="{% static '/css/landingFooter.css' %}">
+    <script type="text/javascript" src="{% static '/js/validations.js' %}"></script>
+    {% endblock %}
+
+
+{% block content %}
+<script>
+    function formatCurrency(input) {
+        input.value = "$" + input.value.replace(/[^\d.]/g, '').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    }
+</script>
+<main>
+    <form onsubmit="return validateForm()" method="post" class="form-content">
+        {% csrf_token %}
+        <h1>Bienvenido a casa</h1>
+        <p>Termina tu registro final, requerimos de la siguiente información para calcular el precio de tu servicio </p>
+        <input name="name" type="text" class="feedback-input" placeholder="Nombre Empresa" />
+        <input name="email" type="text" class="feedback-input" id="email-input" placeholder="Correo Electronico" />
+        <input name="phonenumber" type="text" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" class="feedback-input" placeholder="Número celular" />
+        <select name="sector" id="" class="feedback-input">
+            <option value="" selected disabled>Selecciona tu Giro</option>
+            <option value="">Industrial</option>
+            <option value="">Comercial</option>
+            <option value="">Servicios</option>
+        </select>
+        <select name="" id="" class="feedback-input">
+            <option value="" selected disabled>Selecciona un servicio</option>
+            <option value="">Plan Social Media</option>
+            <option value="">Grilla contenidos (Mensual)</option>
+            <option value="">Grilla contenidos (Semanal)</option>
+            <option value="">Pack de videos (5 semanal)</option>
+            <option value="">Pack de videos (20 mensual)</option>
+            <option value="">Pack de imágenes/ post (10 semanal)</option>
+            <option value="">Pack de imágenes/ post (30 mensual)</option>
+        </select>
+        <div class="check">
+            <label class="label-check">Selecciona las redes sociales que manejas</label>
+            <div class="checkbox-container">
+                <div class="checkbox-column">
+                    <div class="check-content">
+                        <input type="checkbox" id="checkbox1">
+                        <label for="checkbox1">TikTok</label>
+                    </div>
+                    <br>
+                    <div class="check-content">
+                        <input type="checkbox" id="checkbox2">
+                        <label for="checkbox2">Twitter</label>
+                    </div>
+                </div>
+                <div class="checkbox-column">
+                    <div  class="check-content">
+                        <input type="checkbox" id="checkbox5">
+                        <label for="checkbox5">Facebook</label>
+                    </div>
+                    <br>
+                    <div  class="check-content">
+                        <input type="checkbox" id="checkbox6">
+                        <label for="checkbox6">Instagram</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="text" onkeyup="formatCurrency(this)" class="feedback-input" placeholder="¿Cuanto ganaste el ultimo mes?"/>
+        <input name="adress" type="text" class="feedback-input" placeholder="Ingresa tu dirección" />
+        <textarea name="text" class="feedback-input" placeholder="Ingresa tus necesidades"></textarea>
+        <input type="submit" value="siguiente"/>
+    </form>
+</main>
+{% endblock %}
+
+{% block footer %}
+    {% include "layouts/landingFooter.html" %}
+{% endblock %}
