@@ -5,5 +5,4 @@ jeeimkgServiceKey.json
 db.sqlite3
 
 # Cache de python Django
-
 __pycache__/
