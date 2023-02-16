@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_protect
+from .forms import ContactForm
 
 def home(request):
     return HttpResponse("This is home page")
@@ -10,7 +11,14 @@ def index(request):
 
 @csrf_protect
 def contact(request):
-    return render (request, 'contact.html', {})
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()  # Guarda el modelo Contact en la base de datos de Django y en Firestore.
+            return HttpResponse("¡Hola, mundo!")
+    else:
+        form = ContactForm()
+    return render(request, 'contact.html', {'form': form})
 
 def about(request):
     return render(request,'acerca.html')

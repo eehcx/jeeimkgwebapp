@@ -38,10 +38,7 @@
   <h2 class="title-form">Aplica ahora y <br> en un momento <br> te contactamos.</h2>
   <form onsubmit="return validateForm()" method="post"> 
     {% csrf_token %}
-    <input name="name" type="text" class="feedback-input" placeholder="Nombre" required/>
-    <input name="email" type="email" class="feedback-input" id="email-input" placeholder="Correo Electronico" required/>
-    <input name="phonenumber" type="text" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" class="feedback-input" placeholder="Número celular" required/>
-    <textarea name="text" class="feedback-input" placeholder="Mensaje" required></textarea>
+    {{ form.as_p }}
     <input type="submit" value="ENVIAR"/>
   </form>
 </main>

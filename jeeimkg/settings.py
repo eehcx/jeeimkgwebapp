@@ -92,10 +92,15 @@ DATABASES = {
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
-
+"""
 cred = credentials.Certificate("jeeimkgServiceKey.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
+"""
+cred = credentials.Certificate("jeeimkgServiceKey.json")
+firebase_admin.initialize_app(cred, {
+    'projectId': 'jeeimkg-5705b',
+})
 
 
 # Password validation
