@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | JEEIMKG</title>
+    <title>{% block title %}{% endblock %}</title>
     <!--Icono de la página-->
     <link rel="shortcut icon" href="https://jeeimkg-static.s3.us-west-1.amazonaws.com/images/ico/ico.png" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    {% block css %}{% endblock %}
 </head>
 <body>
-    
+    {% block content %}{% endblock %}
 </body>
 </html>

@@ -25,7 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'adminsystem',
-    'authentication',
+    'auth_admin',
     'landing_pages',
     'home'
 ]
@@ -89,18 +89,18 @@ DATABASES = {
     }
 }
 
+"""
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
-"""
-cred = credentials.Certificate("jeeimkgServiceKey.json")
-firebase_admin.initialize_app(cred)
-db = firestore.client()
-"""
+
 cred = credentials.Certificate("jeeimkgServiceKey.json")
 firebase_admin.initialize_app(cred, {
     'projectId': 'jeeimkg-5705b',
 })
+db = firestore.client()
+"""
+
 
 
 # Password validation
@@ -120,6 +120,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+LOGIN_URL = '/login/'
+
 
 # Internationalization
 

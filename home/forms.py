@@ -6,14 +6,11 @@ class ContactForm(forms.ModelForm):
         model = Contact
         fields = ['name', 'email', 'phone', 'message']
         widgets = {
-            'name': forms.TextInput( attrs={'class': 'feedback-input','placeholder': 'Nombre completo'}),
+            'name': forms.TextInput(attrs={'class': 'feedback-input','placeholder': 'Nombre completo'}),
             'email': forms.EmailInput(attrs={'class': 'feedback-input', 'id': 'email-input', 'placeholder': 'Correo electrónico'}),
             'phone': forms.TextInput(attrs={'class': 'feedback-input', 'pattern': '[0-9]{3}[0-9]{3}[0-9]{4}','placeholder':'Número celular'}),
             'message': forms.Textarea(attrs={'class': 'feedback-input','placeholder': 'Mensaje'}),
         }
-
-
-
 
 """
     def save(self, commit=True):
