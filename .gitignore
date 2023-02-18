@@ -6,3 +6,6 @@ db.sqlite3
 
 # Cache de python Django
 __pycache__/
+
+# Archivos de entorno
+.env

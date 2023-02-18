@@ -1,60 +1,48 @@
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
+import os
 from firebase_admin import credentials, auth, firestore
 from google.auth.transport import requests
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User 
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_protect
-#from .forms import firestoreUserForm
-from jeeimkg.db import get_firestore_client
+from .forms import SignupForm
+from .models import User
+from jeeimkg.db import get_firestore_client, credentials as db_credentials
+from django.contrib import messages
 
-
-def signup(request):
-    return render(request, 'signup.html')
-"""
-@csrf_protect
-def signup(request):
-    form = firestoreUserForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        return redirect('index')
-    context = {
-        'form': form,
-    }
-    return render(request, 'signup.html', context)
-"""
-
-# vista para iniciar sesion
-
-# Obtener el cliente Firestore
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./jeeimkgServiceKey.json"
+db = firestore.Client()
 db = get_firestore_client()
 
+# vista para crear usuario
+@csrf_protect
+def signup(request):
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            # Crea un nuevo objeto User con los datos del formulario
+            user = User(email=form.cleaned_data['email'],
+                        password=form.cleaned_data['password'])
+
+            # Guarda el objeto User en la base de datos de Django y en Firestore
+            user.save()
+
+            return redirect('login')
+    else:
+        form = SignupForm()
+    return render(request, 'signup.html', {'form': form})
+
+# vista para iniciar sesion
 @csrf_protect
 def user_login(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
-        user_ref = db.collection('users').where('email', '==', email).limit(1)
-        user_docs = user_ref.get()
-        if len(user_docs) == 0:
-            # No se encontró un usuario con el email dado
-            return render(request, 'login.html', {'error_message': 'Credenciales inválidas.'})
-        user_doc = user_docs[0]
-        if user_doc.get('password') == password:
-            # Autenticación exitosa, inicia sesión en Django
-            user, created = User.objects.get_or_create(email=email)
-            user.set_password(password)
-            user.save()
-            django_user = authenticate(request, username=email, password=password)
-            if django_user is not None:
-                login(request, django_user)
-                return redirect('adminsystem')
-            else:
-                return render(request, 'login.html', {'error_message': 'Credenciales inválidas.'})
+        user = authenticate(request, email=email, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home') # redirige a la página de inicio después del inicio de sesión exitoso
         else:
-            # Contraseña incorrecta
-            return render(request, 'login.html', {'error_message': 'Credenciales inválidas.'})
-    else:
-        return render(request, 'login.html')
+            messages.error(request, 'Credenciales inválidas') # muestra un mensaje de error en la página si las credenciales no son válidas
 
+    return render(request, 'login.html')

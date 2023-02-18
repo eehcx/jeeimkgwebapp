@@ -39,6 +39,7 @@
   <form onsubmit="return validateForm()" method="post"> 
     {% csrf_token %}
     {{ form.as_p }}
+    {{ form.non_field_errors }}
     <input type="submit" value="ENVIAR"/>
   </form>
 </main>

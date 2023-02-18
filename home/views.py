@@ -15,7 +15,7 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()  # Guarda el modelo Contact en la base de datos de Django y en Firestore.
-            return HttpResponse("¡Hola, mundo!")
+            return redirect('index')
     else:
         form = ContactForm()
     return render(request, 'contact.html', {'form': form})
