@@ -3,6 +3,14 @@
     {% block title %}Login | JEEIMKG{% endblock %}
     {% block css %}
         <link rel="stylesheet" type="text/css" href="{% static '/css/login.css' %}">
+        <!--Agrega mi archivo js auth_login--> 
+        <script src="{% static '/js/auth_login.js' %}"></script>
+        <!-- Firebase App (el primer script debe ir siempre primero) -->
+        <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js"></script>
+        <!-- Firebase Authentication -->
+        <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js"></script>
+        <!-- Firebase Firestore -->
+        <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js"></script>
     {% endblock %}
 
     {% block content %}

@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
-import os
-from firebase_admin import credentials, auth, firestore
+import os, firebase_admin
+from firebase_admin import credentials, auth, firestore, exceptions
 from google.auth.transport import requests
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_protect
@@ -23,10 +23,17 @@ def signup(request):
             # Crea un nuevo objeto User con los datos del formulario
             user = User(email=form.cleaned_data['email'],
                         password=form.cleaned_data['password'])
-
             # Guarda el objeto User en la base de datos de Django y en Firestore
             user.save()
-
+            # Crea un usuario en Authentication
+            try:
+                auth.create_user(
+                    email=user.email,
+                    password=user.password
+                )
+            except auth.AuthError as e:
+                # Maneja el error aquí
+                pass
             return redirect('login')
     else:
         form = SignupForm()
@@ -34,15 +41,20 @@ def signup(request):
 
 # vista para iniciar sesion
 @csrf_protect
-def user_login(request):
+def login(request):
     if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        user = authenticate(request, email=email, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('home') # redirige a la página de inicio después del inicio de sesión exitoso
-        else:
-            messages.error(request, 'Credenciales inválidas') # muestra un mensaje de error en la página si las credenciales no son válidas
-
+        email = request.POST['email']
+        password = request.POST['password']
+        try:
+            user = auth.get_user_by_email(email)
+            uid = user.uid
+            # Create a custom token for the user
+            custom_token = auth.create_custom_token(uid)
+            # Add the token to the response
+            response = redirect('adminsystem')
+            response.set_cookie('session', custom_token)
+            return response
+        except exceptions.FirebaseError as e:
+            # Handle any errors that occurred during authentication
+            return render(request, 'login.html', {'error': 'Invalid email or password'})
     return render(request, 'login.html')
