@@ -1,10 +1,7 @@
 /*Tipografía de la marca*/
 @import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@300;400;500;700&display=swap");
-
-body {
-    font-family: "Alegreya Sans SC", sans-serif;
-}
-
+/*Tipografía secundaria*/
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@200;300;400;500&display=swap");
 
 /*Navigation classes*/
 nav {
@@ -102,6 +99,7 @@ nav.down ul li a:after {
     font-size: 25px;
     text-transform: uppercase;
     color: #fff;
+    font-family: "Alegreya Sans SC", sans-serif;
 }
 
 nav.down .logo h1 {

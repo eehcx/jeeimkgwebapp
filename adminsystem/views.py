@@ -8,14 +8,11 @@ def sysadmin(request):
     #validame la sesion apartir del login hecho
     return render(request, 'sysadmin.html', {})
 
-@login_required
 def config(request):
     return render(request, 'configuration.html', {})
 
-@login_required
 def profile(request):
     return render(request, 'profile.html')
 
-@login_required
 def contactClient(request):
     return render(request, 'inbox.html', {})

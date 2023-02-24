@@ -46,3 +46,6 @@ def terminos(request):
 
 def privacity(request):
     return render(request, 'privacidad.html')
+
+def aviso(request):
+    return render(request, 'aviso.html')

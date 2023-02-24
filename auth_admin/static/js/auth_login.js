@@ -22,11 +22,9 @@ var token = getCookie('session');
 firebase.auth().signInWithCustomToken(token)
   .then((userCredential) => {
     // El usuario ha sido autenticado exitosamente
-    // ...
   })
   .catch((error) => {
     // Manejar cualquier error que haya ocurrido durante la autenticación
-    // ...
   });
 
 // Función para leer el valor de una cookie por su nombre

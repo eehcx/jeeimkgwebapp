@@ -31,7 +31,7 @@ def signup(request):
                     email=user.email,
                     password=user.password
                 )
-            except auth.AuthError as e:
+            except exceptions.FirebaseError as e:
                 # Maneja el error aquí
                 pass
             return redirect('login')

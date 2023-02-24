@@ -1,5 +1,3 @@
-@charset "ISO-8859-1";
-
 /* Fuentes
 ********************************************************************* */
 
@@ -261,8 +259,16 @@ div.txt-title{
 }
 
 .logo-container img {
+  height: 52px;
   padding-right: 40px;
-  filter: grayscale(100%) brightness(90%);
+  filter: grayscale(90%)
+}
+
+.opinions-card{
+  height: 400px;
+  background-color: #ffffff;
+  z-index: 5;
+  margin: 90px 90px;
 }
 
 img{
@@ -290,6 +296,15 @@ section.products-content {
 .products-content {
   height: 1000px;
   width: 100%;
+}
+
+.txt-products{
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 400;
+  font-size: 50px;
+  padding: 100px 60px 0px 60px; /*Arriba, derecha, abajo, izquierda*/
+  color: #a6a6a6;
+  margin-top: 200px;
 }
 
 /*contact classes*/

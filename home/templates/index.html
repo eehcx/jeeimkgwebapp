@@ -5,11 +5,12 @@
 
 {% block css %}
   <link rel="stylesheet" type="text/css" href="{% static '/css/styles.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static '/css/footer.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '/css/footer.css' %}"> 
 {% endblock %}
 
 {% block js %}
   <script type="text/javascript" src="{% static '/js/navbar.js' %}"></script>
+  <script type="text/javascript" src="{% static '/js/main.js' %}"></script>
 {% endblock %}
 
 {% block nav %}
@@ -67,28 +68,30 @@
       </p>
       <h2 class="title-opinions">CON ELLOS <br> NOS ASOCIAMOS</h2>
       <div class="logo-container">
-        <img src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/images/opiniones/gray/nacajucanews.png" alt="Logo 1">
-        <img src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/images/opiniones/gray/trigmar.png" alt="Logo 2">
-        <img src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/images/opiniones/gray/eehcx.png" alt="Logo 3">
-        <img src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/images/opiniones/gray/joeExpeditions.png" alt="Logo 4">
+        <img src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/images/opiniones/black/nacajucanews.png" alt="Logo 1">
+        <img src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/images/opiniones/black/trigmar.png" alt="Logo 2">
+        <img src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/images/opiniones/black/eehcx.png" alt="Logo 3">
+        <img src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/images/opiniones/black/joeExpeditions.png" alt="Logo 4">
       </div>
+    </div>
+    <div class="opinions-card">
+
     </div>
   </section>
 
   <section id="products" class="products-content">
-    <p class="txt-opinions">De igual forma hemos comprobado que muchos 
+    <p class="txt-products">De igual forma hemos comprobado que muchos 
       negocios crecen en el momento en el momento en que estos se adaptan al mundo digital
     </p>
     <h2 class="title-opinions">CONOCE NUESTRAS <br> HERRAMIENTAS</h2>
     <div class="content-product">
-
     </div>
   </section>
 
   <section id="contact" class="contact-content">
     <div>
       <div class="info-join">
-        <h2>hablemos<a class="btn-join" href="contacto/">contacto</a></h2>
+        <h2>hablemos<a class="btn-join" href="{% url 'contacto' %}">contacto</a></h2>
       </div>
     </div>
   </section>

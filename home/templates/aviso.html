@@ -1,0 +1,53 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+    {% block title %}Sitio en construcción{% endblock %}
+    {% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/aviso.css' %}">
+    {% endblock %}
+
+    {% block js %}
+    <script src="{% static '/js/main.js' %}"></script>
+    {% endblock %}
+
+{% block nav %}
+    {% include "layouts/navbar.html" %}
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="content">
+        <div class="content__title">
+            <h1>We are <a id="myBtn">working</a> on it!</h1>            
+        </div>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Queremos que tu experiencia en línea con nosotros sea única. ¡Gracias por tu paciencia y estamos ansiosos de que puedas disfrutar de nuestro nuevo sitio web muy pronto!</p>
+    </div>
+</div>
+
+<script>
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+span.onclick = function() {
+  modal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+{% endblock %}

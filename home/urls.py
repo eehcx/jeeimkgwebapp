@@ -3,7 +3,8 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('',views.index, name='index'),
+    #modificar y poner esta como el index y la de aviso comentarla
+    path('index/',views.index, name='index'),
     path('acerca/', views.about, name='acerca'),
     path('contacto/', views.contact, name='contacto'),
     path('clientes/',views.clientes, name='clientes'),
@@ -13,5 +14,6 @@ urlpatterns = [
     path('afiliacion/', views.afiliacion, name='afiliacion'),
     path('mapa/', views.mapa, name="mapa"),
     path('terminos/',views.terminos, name='terminos'),
-    path('privacidad/',views.privacity, name='privacidad')
+    path('privacidad/',views.privacity, name='privacidad'),
+    path('', views.aviso, name='construccion')
 ]
