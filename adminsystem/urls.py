@@ -7,4 +7,6 @@ urlpatterns = [
     path('configuration/',views.config, name='configuration'),
     path('profile/',views.profile, name='profile'),
     path('inbox/',views.contactClient, name='contactClient'),
+    path('clients/',views.clients, name='clients'),
+    path('employers/',views.employers, name='employers')
 ]

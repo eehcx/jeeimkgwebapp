@@ -1,7 +1,6 @@
 from django.db import models
 from firebase_admin import firestore
 
-
 # class Client(models.Model):
 class Client(models.Model):
     name = models.CharField(max_length=100)

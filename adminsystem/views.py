@@ -16,3 +16,9 @@ def profile(request):
 
 def contactClient(request):
     return render(request, 'inbox.html', {})
+
+def clients(request):
+    return render(request, 'clients.html', {})
+
+def employers(request):
+    return render(request, 'employers.html', {})
