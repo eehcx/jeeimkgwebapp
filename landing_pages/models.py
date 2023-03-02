@@ -1,7 +1,21 @@
 from django.db import models
 from firebase_admin import firestore
+from django.core.exceptions import ValidationError
+import random
 
-# class Client(models.Model):
+# MODELO DE CREACION DE URL PERSONALIZADO PARA CADA CLIENTE PRE-REGISTRADO
+class UniqueCode(models.Model):
+    code = models.CharField(max_length=36, unique=True)
+
+    def save_unique_code_to_database(unique_code):
+        try:
+            code = UniqueCode.objects.create(code=unique_code)
+            code.save()
+        except InterruptedError: # IntegrityError
+            raise ValidationError("El código ya está en uso.")
+
+
+# MODELO DE CREACIÓN DE CLIENTES 
 class Client(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
