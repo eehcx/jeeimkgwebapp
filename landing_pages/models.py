@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 import random
 
 # MODELO DE CREACION DE URL PERSONALIZADO PARA CADA CLIENTE PRE-REGISTRADO
+"""  
 class UniqueCode(models.Model):
     code = models.CharField(max_length=36, unique=True)
 
@@ -13,7 +14,7 @@ class UniqueCode(models.Model):
             code.save()
         except InterruptedError: # IntegrityError
             raise ValidationError("El código ya está en uso.")
-
+"""
 
 # MODELO DE CREACIÓN DE CLIENTES 
 class Client(models.Model):

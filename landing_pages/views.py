@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.core.exceptions import ValidationError
 from django.utils.crypto import get_random_string
 from .forms import ClientForm
-from .models import UniqueCode
+#from .models import UniqueCode
 from firebase_admin import firestore # si falla el registro añadir el import firebase_Admin
 import os
 
@@ -13,6 +13,7 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./jeeimkgServiceKey.json"
 db = firestore.Client()
 
 # URL UNICA POR CADA USUARIO
+"""   
 def generate_unique_code():
     code = get_random_string(length=36)
     try:
@@ -32,12 +33,10 @@ def landing_page(request, code):
 def send_code_to_user(email):
     unique_code = generate_unique_code()
     # Enviar el código único al usuario a través de correo electrónico
-    # ...
 
 def invalid_code(request):
     return render(request, 'invalid_code.html') 
-
-
+"""
 # FORMULARIO DE REGISTRO DE NUEVOS CLIENTES
 @csrf_protect
 def starthere(request):
