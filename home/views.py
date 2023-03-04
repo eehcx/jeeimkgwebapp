@@ -49,3 +49,9 @@ def privacity(request):
 
 def aviso(request):
     return render(request, 'aviso.html')
+
+def work(request):
+    return render(request, 'work.html')
+
+def opinions(request):
+    return render(request, 'opinions.html')

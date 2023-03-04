@@ -15,5 +15,7 @@ urlpatterns = [
     path('mapa/', views.mapa, name="mapa"),
     path('terminos/',views.terminos, name='terminos'),
     path('privacidad/',views.privacity, name='privacidad'),
-    path('', views.aviso, name='construccion')
+    path('', views.aviso, name='construccion'),
+    path('trabajo/', views.work, name='work'),
+    path('opiniones/', views.opinions, name='opinions')
 ]

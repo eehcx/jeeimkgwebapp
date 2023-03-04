@@ -1,4 +1,16 @@
 {% extends "layouts/base.html" %}
 {% load static %}
 
-    {% block title %}Acerca de | JEEIMKG{% endblock %}
+    {% block title %}Acerca de{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static '/css/about.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static '/css/footer.css' %}">
+{% endblock %}
+
+{% block nav %}
+    {% include "layouts/navbar.html" %}
+{% endblock %}
+
+{% block content %}
+{% endblock %}
