@@ -5,6 +5,7 @@
         <link rel="stylesheet" type="text/css" href="{% static '/css/login.css' %}">
         <!--Agrega mi archivo js auth_login--> 
         <script src="{% static '/js/auth_login.js' %}"></script>
+        <script src="{% static '/js/acces_auth.js' %}"></script>
         <!-- Firebase App (el primer script debe ir siempre primero) -->
         <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js"></script>
         <!-- Firebase Authentication -->
@@ -14,8 +15,12 @@
     {% endblock %}
 
     {% block content %}
-    {% if error_message %}
-      <p>{{ error_message }}</p>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
     {% endif %}
     <form method="post">
       {% csrf_token %}

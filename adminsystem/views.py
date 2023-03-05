@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 #from jeeimkg.decorators import firebase_auth_required
 from auth_admin.views import firebase_auth_required
 
-@firebase_auth_required
+#@firebase_auth_required
 def sysadmin(request):
     return render(request, 'sysadmin.html', {})
 

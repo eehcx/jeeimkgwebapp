@@ -1,7 +1,8 @@
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.urls import reverse
-import os, firebase_admin
+import os
+import firebase_admin
 from firebase_admin import credentials, auth, firestore, exceptions
 from django.contrib.auth.decorators import login_required
 from google.auth.transport import requests
@@ -51,42 +52,15 @@ def login(request):
         password = request.POST['password']
         try:
             user = auth.get_user_by_email(email)
-            uid = user.uid
-            # Create a custom token for the user
-            custom_token = auth.create_custom_token(uid)
-            # Add the token to the response
-            response = redirect('adminsystem')
-            response.set_cookie('session', custom_token)
-            print(custom_token)
-            return response
-        except exceptions.FirebaseError as e:
-            # Handle any errors that occurred during authentication
-            return render(request, 'login.html', {'error': 'Invalid email or password'})
+            user = authenticate(request, uid=user.uid, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('index')
+            else:
+                messages.error(request, 'Incorrect email or password.')
+        except auth.AuthError as e:
+            messages.error(request, str(e))
     return render(request, 'login.html')
-
-
-
-""" 
-@csrf_protect
-def login(request):
-    if request.method == 'POST':
-        email = request.POST['email']
-        password = request.POST['password']
-        try:
-            user = auth.get_user_by_email(email)
-            uid = user.uid
-            # Crea un token personalizado para el usuario
-            custom_token = auth.create_custom_token(uid)
-            # Add the token to the response
-            response = redirect('adminsystem')
-            response.set_cookie('session', custom_token)
-            return response
-        except exceptions.FirebaseError as e:
-            # Handle any errors that occurred during authentication
-            return render(request, 'login.html', {'error': 'Invalid email or password'})
-    return render(request, 'login.html')
-
-"""
 
 # funcion para verificar si el usuario esta autenticado
 def firebase_auth_required(view_func):
@@ -96,10 +70,16 @@ def firebase_auth_required(view_func):
         if not session_cookie:
             return redirect(f'/login/?next={request.path}')
         try:
-            decoded_claims = auth.verify_session_cookie(session_cookie)
+            decoded_claims = auth.verify_session_cookie(session_cookie, check_revoked=True)
             uid = decoded_claims['uid']
             request.user = auth.get_user(uid)
+            # get user object from Firebase Auth
+            user = auth.get_user(uid)
+            # sign in user on client side
+            auth.auth().signInWithEmailAndPassword(user.email, 'password')
         except auth.InvalidSessionCookieError:
+            return redirect(f'/login/?next={request.path}')
+        except auth.RevokedIdTokenError:
             return redirect(f'/login/?next={request.path}')
         response = view_func(request, *args, **kwargs)
         if response.status_code == 302 and 'Location' in response:
@@ -113,3 +93,4 @@ def firebase_auth_required(view_func):
                 response['Location'] = redirect_url.geturl()
         return response
     return wrapped_view
+
