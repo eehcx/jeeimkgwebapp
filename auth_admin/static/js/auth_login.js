@@ -11,30 +11,3 @@ var firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-
-document.querySelector('#login-form').addEventListener('submit', function(event) {
-  event.preventDefault();
-  var email = document.querySelector('#email').value;
-  var password = document.querySelector('#password').value;
-
-  fetch('/login/', {
-    method: 'POST',
-    body: JSON.stringify({email: email, password: password}),
-    headers: {'Content-Type': 'application/json'}
-  })
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(data) {
-    firebase.auth().signInWithCustomToken(data.token)
-      .then(function(userCredential) {
-        console.log('Usuario autenticado con éxito:', userCredential.user.email);
-      })
-      .catch(function(error) {
-        console.error('Error al autenticar al usuario:', error);
-      });
-  })
-  .catch(function(error) {
-    console.error('Error al enviar los datos del formulario:', error);
-  });
-});
