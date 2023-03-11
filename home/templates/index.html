@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block js %}
-  <script type="text/javascript" src="{% static '/js/navbar.js' %}"></script>
+  <script type="text/javascript" src="{% static '/js/navbar.js' %}" defer></script>
   <script type="text/javascript" src="{% static '/js/main.js' %}" defer></script>
   <script type="text/javascript" src="{% static '/js/loading.js' %}"></script>
 {% endblock %}
@@ -39,52 +39,40 @@
 <!-- Fin - Header -->
 
 <main>
-  <section id="about" class="about-content">
+  <section id="about" class="about-content" >
+    <div class="about-image" data-src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/Fondos/secondary.jpg">
+    </div>
+    <div class="about-main">
+      <h5 class="about-title">¿qué hacemos?</h5>
+      <ul class="about-list">
+        <li>
+          <div class="list-item">
+            <div class="li-number">1:</div>
+            <h3 class="list-title">
+              EXPERIENCIA DE USUARIO
+            </h3>
+          </div>
+          <p></p>
+        </li>
+        <li>
+          <div class="list-item">
+            <div class="li-number">2:</div>
+            <h3 class="list-title">
+              DISEÑO Y DESARROLLO
+            </h3>
+          </div>
+          <p>
+
+          </p>
+        </li>
+      </ul>
+    </div>
   </section>
 
   <section id="work" class="work-content">
-    <div class="txt-title">nos especializamos en</div>
-    <div class="row">
-      <div>
-        <a href="" class="goBtn" target="_BLANK">Branding & Indentidad
-          <span class="btnInfo highlight">▸ ver más</span>
-        </a>
-        <a href="" class="goBtn" target="_BLANK">Desarrollo de Aplicaciones
-          <span class="btnInfo highlight">▸ ver más</span>
-        </a>
-        <a href="" class="goBtn" target="_BLANK">Contenido Audiovisual
-          <span class="btnInfo highlight">▸ ver más</span>
-        </a>
-        <a href="" class="goBtn" target="_BLANK">ADS & Spots Publicitarios
-          <span class="btnInfo highlight">▸ ver más</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section id="opinions" class="opinions-content">
-    <div>
-      <p class="txt-opinions">Las marcas que respetan la cultura, la naturaleza
-        y la inclusión conquistarán el mundo.
-      </p>
-      <h2 class="title-opinions">CON ELLOS <br> NOS ASOCIAMOS</h2>
-      <div class="logo-container">
-        <img src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/images/opiniones/black/nacajucanews.png" alt="Logo de Nacajuca al día">
-        <img src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/images/opiniones/black/trigmar.png" alt="Logo de Trigmar">
-        <img src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/images/opiniones/black/eehcx.png" alt="Logo de eehcx">
-        <img src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/images/opiniones/black/joeExpeditions.png" alt="Logo de Joe Expeditions">
-      </div>
-    </div>
-    <div class="opinions-card">
-      
-    </div>
   </section>
 
   <section id="products" class="products-content">
-    <p class="txt-products">De igual forma hemos comprobado que muchos 
-      negocios crecen en el momento en el momento en que estos se adaptan al mundo digital
-    </p>
-    <h2 class="title-opinions">CONOCE NUESTRAS <br> HERRAMIENTAS</h2>
     <div class="content-product">
     </div>
   </section>

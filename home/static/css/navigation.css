@@ -39,7 +39,7 @@ nav ul li a:after {
     left: 50%;
     border-radius: 5px;
     position: absolute;
-    background: #171717;
+    background: #ffffff;
     transition: width 0.7s ease 0s, left 0.7s ease 0s;
     width: 0;
 }
@@ -58,7 +58,7 @@ nav ul li a:hover:after {
   }
 
 .navbar-link{
-    color: #171717;
+    color: #ffffff;
     text-transform: uppercase;
     text-decoration: none;
 }
@@ -96,7 +96,7 @@ nav.down ul li a:after {
 
 .logo a h1 {
     font-size: 30px;
-    color: #171717;
+    color: #ffffff;
 }
 
 /*logo para scroll up*/

@@ -35,7 +35,7 @@ header.header-content{
   width: 100%;
 }
 .contact-header{
-  background-image: url("https://jeeimkg-static.s3.us-west-1.amazonaws.com/images/main.jpg");
+  background-image: url("https://jeeimkg-static.s3.us-west-1.amazonaws.com/Fondos/main1.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -45,6 +45,7 @@ header.header-content{
   float: right;
   margin-top: 10%;
 }
+
 h1.main-title{
   display: block; 
   float: left;
@@ -55,6 +56,7 @@ h1.main-title{
   margin-top: 18%;
   margin-left: 5%;
 }
+
 .title-form{
   display: block;
   float: right;

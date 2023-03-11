@@ -5,4 +5,5 @@ urlpatterns = [
     #path('<str:code>/', views.starthere, name='inicia'),
     path('form_client/', views.starthere, name='inicia'),
     #path('invalid_code/', views.invalid_code, name='invalid_code'),
+    path('GzoufrRRhZJS84Sz3b8U', views.employs, name='empleados')
 ]

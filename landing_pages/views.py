@@ -78,3 +78,7 @@ def starthere(request):
         print(form.errors)
         # Renderizar la plantilla del formulario con errores
         return render(request, 'inicia.html', {'form': form})
+    
+
+def employs(request):
+    return render(request, 'employs.html')
