@@ -12,6 +12,7 @@
   <script type="text/javascript" src="{% static '/js/navbar.js' %}" defer></script>
   <script type="text/javascript" src="{% static '/js/main.js' %}" defer></script>
   <script type="text/javascript" src="{% static '/js/loading.js' %}"></script>
+  <script type="text/javascript" src="{% static '/js/slide.js' %}"></script>
 {% endblock %}
 
 {% block nav %}
@@ -19,6 +20,43 @@
 {% endblock %}
 
 {% block content %}
+<script>
+  function lazyLoadImages() {
+  var lazyloadImages = document.querySelectorAll('.work-img');
+
+  if ('IntersectionObserver' in window) {
+    var imageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var image = entry.target;
+          var dataSrc = image.getAttribute('data-src');
+          
+          if (dataSrc) {
+            setTimeout(function() {
+              image.src = dataSrc;
+              image.removeAttribute('data-src');
+              image.classList.remove('low-res');
+              observer.unobserve(image);
+            }, 600);
+          } else {
+            observer.unobserve(image);
+          }
+        }
+      });
+    });
+
+    lazyloadImages.forEach(function(image) {
+      image.classList.add('low-res');
+      imageObserver.observe(image);
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  lazyLoadImages();
+});
+
+</script>
 <header id="header">
   <object data="navigation.html" type="text/html"></object>
   <section class="home-header" id="home">
@@ -44,7 +82,7 @@
     </div>
     <div class="about-main">
       <h5 class="about-title">¿qué hacemos?</h5>
-      <ul class="about-list">
+      <ul class="about-list" >
         <li>
           <div class="list-item">
             <div class="li-number">1:</div>
@@ -52,7 +90,10 @@
               EXPERIENCIA DE USUARIO
             </h3>
           </div>
-          <p></p>
+          <p class="list-txt">Nos enfocamos en entender a la audiencia y diseñar 
+            estrategias que te permitan interactuar de manera fluida 
+            y satisfactoria con tu web, redes sociales y otros canales 
+            digitales de nuestros clientes.</p>
         </li>
         <li>
           <div class="list-item">
@@ -61,8 +102,13 @@
               DISEÑO Y DESARROLLO
             </h3>
           </div>
-          <p>
-
+          <p class="list-txt">Nos enfocamos en entender las necesidades y objetivos de 
+            nuestros clientes para crear soluciones atractivas y funcionales 
+            en diseño y desarrollo. Utilizamos tecnologías de vanguardia 
+            y trabajamos en conjunto con nuestros clientes para crear 
+            una experiencia de usuario óptima y coherente con su identidad 
+            de marca, generando una imagen positiva y fortaleciendo su 
+            presencia en línea.
           </p>
         </li>
       </ul>
@@ -70,6 +116,21 @@
   </section>
 
   <section id="work" class="work-content">
+    <div class="work-container">
+      <div class="work-left">
+        <h1 class="work-title">trabajo <br> destacado</h1>
+        <a href="https://www.behance.net/JEEIMKG_DESIGN" target="_blank" rel="noopener noreferrer">ver todos</a>
+      </div>
+      <div class="work-slide">
+        <img class="work-img" src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/Work/joee1.jpg" data-src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/Work/joee.jpg" loading="lazy" alt="">
+        <img class="work-img" src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/Work/nacajucad1.jpg" data-src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/Work/nacajucad.jpg" loading="lazy" alt="" style="display: none;">
+        <img class="work-img" src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/Work/trigmar1.jpg" data-src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/Work/trigmar.jpg" loading="lazy" alt="" style="display: none;">
+        <!--
+          <span class="prev">&#10094;</span>
+          <span class="next">&#10095;</span>
+        -->
+      </div>
+    </div>
   </section>
 
   <section id="products" class="products-content">

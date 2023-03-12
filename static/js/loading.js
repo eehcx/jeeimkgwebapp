@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var lazyloadImages;
 
     if ("IntersectionObserver" in window) {
-    lazyloadImages = document.querySelectorAll(".contact-header, .about-image")
+    lazyloadImages = document.querySelectorAll(".contact-header, .about-image, .work-img")
     var imageObserver = new IntersectionObserver(function(entries, observer) {
         entries.forEach(function(entry) {
         if (entry.isIntersecting) {

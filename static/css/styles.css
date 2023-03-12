@@ -170,7 +170,7 @@ section.about-content{
 .li-number{
   font-weight: 400;
   font-size: 2rem;
-  padding-right: 4%;
+  padding-right: 8%;
 }
 
 .list-title{
@@ -178,10 +178,73 @@ section.about-content{
   font-size: 2.2rem;
 }
 
+p.list-txt{
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 400;
+  line-height: 31px;
+  font-size: 1.2rem;
+  padding: 20px 100px 0px 470px; /*Arriba, derecha, abajo, izquierda*/
+  text-align: justify;
+}
+
 .list-item {
   display: flex;
   align-items: center; /* opcional para alinear verticalmente */
+  max-width: 80%;
+  margin-left: 30%;
 }
+
+.about-list li {
+  text-align: right;
+  margin-bottom: 20px;
+}
+/*work classes*/
+
+section.work-content {
+  height: 100%;
+  width: 100%;
+  margin-bottom: 10%;
+}
+
+.work-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.work-left{
+  margin-left: 90px;
+}
+.work-left a{
+  text-decoration: none;
+  font-size: 35px;
+  color: #000;
+  margin-top: 20px;
+}
+
+.work-title{
+  font-weight: 500;
+  font-size: 120px;
+  line-height: 120px;
+}
+
+img.work-img{
+  top: 0;
+  left: 0;
+  height: 300px;
+  float: right;
+  margin-right: 100px;
+}
+
+.work-slide{
+  position: relative;
+  overflow: hidden;
+}
+
+.prev, .next {
+  cursor: pointer;
+}
+
 
 /*products classes*/
 
