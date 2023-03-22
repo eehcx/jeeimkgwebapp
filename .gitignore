@@ -8,4 +8,16 @@ db.sqlite3
 __pycache__/
 
 # Archivos de entorno
+<<<<<<< HEAD
+<<<<<<< HEAD
 .env
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+=======
+.env
+>>>>>>> 51f44e72d358fc01d9edcdb3088647efb2468ed2
+=======
+.env
+>>>>>>> 51f44e72d358fc01d9edcdb3088647efb2468ed2
