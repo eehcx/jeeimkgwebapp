@@ -61,6 +61,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'jeeimkg.wsgi.application'
 
+# bases de datos
+
+"""
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+
+# Configurar la clave privada descargada
+cred = credentials.Certificate("jeeimkgServiceKey.json")
+firebase_admin.initialize_app(cred)
+
+# Crear una conexión a Firestore
+db = firestore.client()
+"""
+
+
+
+
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
