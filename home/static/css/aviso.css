@@ -62,7 +62,7 @@ body{
     font-weight: 800;
     display: inline-block;
     padding: 1rem 2rem;
-    border: 2px solid #cc1517;
+    border: 2px solid #325dc8;
     font-size: 1.2rem;
     color: #ffffff;
     text-decoration: none;
@@ -70,8 +70,8 @@ body{
   }
   
   .content__button a:hover {
-    background-color: #cc1517;
-    border: 2px solid #cc1517;
+    background-color: #325dc8;
+    border: 2px solid #325dc8;
     color: white;
   }
 
@@ -90,7 +90,7 @@ body{
   }
 
   h1 a:hover{
-    color: #cc1517;
+    color: #325dc8;
   }
 
 
@@ -154,7 +154,7 @@ body{
 
 .close:hover,
 .close:focus {
-  color: #cc1517;
+  color: #325dc8;
   text-decoration: none;
   cursor: pointer;
 }
@@ -162,7 +162,7 @@ body{
 .modal-header {
   padding: 20px;
   background-color: #090909;
-  color: #cc1517;
+  color: #325dc8;
 }
 
 .modal-body {padding-bottom: 20px; padding-left: 20px; color: #ffffff;}

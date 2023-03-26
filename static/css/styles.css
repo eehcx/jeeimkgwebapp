@@ -98,7 +98,7 @@ b {
 
 b span {
   display: inline-block;
-  color: #bababa;
+  color: #5772b7;
   position: relative;
   white-space: nowrap;
   top: 0;
@@ -265,6 +265,11 @@ section.products-content {
 .products-content {
   height: 1000px;
   width: 100%;
+}
+
+.title-products{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
 }
 
 .txt-products{
