@@ -7,6 +7,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@200;300;400;500&display=swap");
 /*Para uso unico*/
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 /* Base Styles
 ********************************************************************* */
@@ -273,6 +274,59 @@ section.products-content {
   padding: 100px 60px 0px 60px; /*Arriba, derecha, abajo, izquierda*/
   color: #a6a6a6;
   margin-top: 200px;
+}
+
+.row{
+  font-family: 'Ubuntu', sans-serif;
+  padding: 15vmax 0px 0px 200px; /*Arriba, derecha, abajo, izquierda*/
+}
+
+.highlight{
+  color: #325dc8;
+}
+
+.goBtn{
+  display: block;
+  width:100%;
+  height:100%;
+  color: #090909;
+  font-weight: bold;
+  font-size: 11vmin;
+  line-height: 170%;
+  text-align: left;
+  padding: .5vmax;
+  transition: all .2s ease-in-out;
+}
+
+.goBtn strong{
+  font-family: 'Open Sans', sans-serif;
+}
+
+.btnInfo{
+  font-size: 3vmin;
+  text-transform: lowercase;
+  letter-spacing: 0;
+  font-weight: normal;
+  padding-left: -10vw;
+  opacity: 0;
+  transition: all .2s ease .15s;
+}
+
+.goBtn:hover{
+  text-decoration: none;
+  padding-left: 2.5vmax;
+  color: #606060;
+}
+
+.goBtn:hover .btnInfo{
+  opacity: 1;
+  padding-left: 1vmin;
+}
+
+@media screen and (max-width: 768px) {
+  .row{
+    margin-left: 0;
+  }
 }
 
 /*contact classes*/
