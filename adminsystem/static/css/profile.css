@@ -1,0 +1,30 @@
+#dark{
+    background: #1e222d;
+}
+
+.settings{
+    background: #1e222d;
+}
+.card {
+    background: #1e222d;
+}
+
+ .form-control, .settings-profile select {
+    background-color: #2a2e39;
+    border: 1px solid #2a2e39;
+    color: #ffffff;
+}
+
+
+.custom-file-label {
+    background: #2a2e39;
+    border: 1px solid #2a2e39;
+    color: #616d75;
+}
+
+
+.settings-profile .custom-file {
+    display: inline-block;
+    width: 20%;
+    margin-left: 20px;
+}

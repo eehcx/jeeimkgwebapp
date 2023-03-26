@@ -1,12 +1,14 @@
 {% extends "sysbase.html" %}
+{% load static %}
 
     {% block title %}Profile | Administración{% endblock %}
 
+    {% block css %}
+        <link rel="stylesheet" href="{% static '/css/sidebar.css' %}">
+        <link rel="stylesheet" href="{% static '/css/profile.css' %}">
+    {% endblock %}
 
 {% block content %}
-<body>
     <main>
-        
     </main>
-</body>
 {% endblock %}

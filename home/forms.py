@@ -18,11 +18,3 @@ class ContactForm(forms.ModelForm):
             'message': forms.Textarea(attrs={'class': 'feedback-input','placeholder': 'Mensaje', 'label': ''}),
         }
         label_suffix = ''
-"""
-    def save(self, commit=True):
-        instance = super(ContactForm, self).save(commit=False)
-        if commit:
-            instance.save()
-            instance.save_to_firestore()
-        return instance
-"""
