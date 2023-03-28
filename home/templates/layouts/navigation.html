@@ -19,4 +19,28 @@
         <li><a class="navbar-link" href="{% url 'contacto' %}">contacto</a></li>
     </ul>
 </nav>
+<aside>
+    <div class="outer-close toggle-overlay">
+        <a class="close"><span></span></a>
+    </div>
+    <nav>
+        <ul class="navbar-responsive" id="nav-responsive">
+            <li><a class="navbar-break" href="{% url 'acerca' %}">acerca</a></li>
+            <li><a class="navbar-break" href="{% url 'work' %}">trabajo</a></li>
+            <li><a class="navbar-break" href="{% url 'opinions' %}">opiniones</a></li>
+            <li><a class="navbar-break" href="{% url 'productos' %}">productos</a></li>
+            <li><a class="navbar-break" href="{% url 'contacto' %}">contacto</a></li>
+        </ul>
+    </nav>
+</aside>
+<script>
+    (function ($) {
+        $(function () {
+            $('.toggle-overlay').click(function () {
+                $('aside').toggleClass('open');
+                $('.bar').toggleClass('animate');
+            });
+        });
+    })(jQuery);
+</script>
 {% endblock %}

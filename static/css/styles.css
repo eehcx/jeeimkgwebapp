@@ -31,6 +31,7 @@ body {
   height: 100vh;
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
@@ -283,7 +284,7 @@ section.products-content {
 
 .row{
   font-family: 'Ubuntu', sans-serif;
-  padding: 15vmax 0px 0px 200px; /*Arriba, derecha, abajo, izquierda*/
+  padding: 15vmax 0px 0px 250px; /*Arriba, derecha, abajo, izquierda*/
 }
 
 .highlight{
@@ -320,7 +321,7 @@ section.products-content {
 .goBtn:hover{
   text-decoration: none;
   padding-left: 2.5vmax;
-  color: #606060;
+  color: #999999;
 }
 
 .goBtn:hover .btnInfo{
@@ -362,7 +363,7 @@ section.products-content {
 }
 
 .btn-join:hover {
-  color: #cc1517;
+  color: #325dc8;
 }
 
 /* Responsive Styles

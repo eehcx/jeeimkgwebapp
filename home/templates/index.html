@@ -20,45 +20,10 @@
 {% endblock %}
 
 {% block content %}
-<script>
-  function lazyLoadImages() {
-  var lazyloadImages = document.querySelectorAll('.work-img');
-
-  if ('IntersectionObserver' in window) {
-    var imageObserver = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          var image = entry.target;
-          var dataSrc = image.getAttribute('data-src');
-          
-          if (dataSrc) {
-            setTimeout(function() {
-              image.src = dataSrc;
-              image.removeAttribute('data-src');
-              image.classList.remove('low-res');
-              observer.unobserve(image);
-            }, 600);
-          } else {
-            observer.unobserve(image);
-          }
-        }
-      });
-    });
-
-    lazyloadImages.forEach(function(image) {
-      image.classList.add('low-res');
-      imageObserver.observe(image);
-    });
-  }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-  lazyLoadImages();
-});
-
-</script>
 <header id="header">
-  <object data="navigation.html" type="text/html"></object>
+  <div class="hamburger-menu toggle-overlay">
+    <div class="bar"></div>
+  </div>
   <section class="home-header" id="home">
     <div>
       <div class="content__container">
@@ -81,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="about-image" data-src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/Fondos/secondary.jpg">
     </div>
     <div class="about-main">
-      <h5 class="about-title">¿qué hacemos?</h5>
+      <h5 class="about-title">¿qué hacemos?</h5> 
       <ul class="about-list" >
         <li>
           <div class="list-item">
@@ -138,8 +103,8 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="row">
         <p class="title-products">Uneté a</p>
         <div class="col-xs-12">
-          <a href="#" class="goBtn" target="_BLANK">Horgan <strong>AI</strong><span class="btnInfo highlight">▸ Automate Artificial Inteligence</span></a>
-          <a href="#" class="goBtn" target="_BLANK">Horgan <strong>Agenda</strong> <span class="btnInfo highlight">▸ Agenda for you business</span></a>
+          <a href="#" class="goBtn" target="_BLANK">Horgan <strong>AI</strong><span class="btnInfo highlight">▸ automate Artificial Inteligence</span></a>
+          <a href="#" class="goBtn" target="_BLANK">Horgan <strong>Agenda</strong> <span class="btnInfo highlight">▸ agenda for you business</span></a>
           <a href="#" class="goBtn" target="_BLANK">Horgan <strong>Spaces</strong> <span class="btnInfo highlight">▸ metasearch engine</span></a>
         </div>
       </div>

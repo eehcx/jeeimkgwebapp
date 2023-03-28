@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
         setTimeout(function() {
         image.classList.remove("low-res");
         imageObserver.observe(image);
-        }, 2000);
+        }, 2500);
     });
     }
 });
