@@ -136,6 +136,7 @@ aside {
     text-decoration: none;
     margin: 0;
     padding: 0;
+    color: #fff;
 }
 
 .navbar-break {
@@ -188,16 +189,16 @@ div.toggle-overlay{
 }
 
 .toggle-overlay{
-   position: absolute;
-right: 10px;
+    position: absolute;
+    right: 10px;
     top: 0;
     width: 65px;
     height: 65px;
     cursor: pointer;
-  background:transparent;
-  border:none;
-  color:#fff;
-  z-index:9999999;
+    background:transparent;
+    border:none;
+    color:#fff;
+    z-index:9999999;
 }
 .bar, .bar:after, .bar:before{
     width:35px;
@@ -253,9 +254,21 @@ transition: bottom 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms c
 .bar.animate{
  background: rgba(255, 255, 255, 0);  
 }
-
+/*
 @media (max-width: 1920px) {
     div.toggle-overlay {
+        display: none;
+    }
+    .navbar-responsive{
+        display: none;
+    }
+}
+*/
+@media (min-width: 901px) {
+    div.toggle-overlay {
+        display: none;
+    }
+    .navbar-responsive{
         display: none;
     }
 }
@@ -266,7 +279,24 @@ transition: bottom 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms c
     .navbar-list {
         display: none;
     }
+    div.navbar-responsive{
+        display: block;
+    }
     div.toggle-overlay {
         display: block;
+    }
+
+    nav ul li a:after {
+        background: none repeat scroll 0 0 transparent;
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 1.5px;
+        left: 50%;
+        border-radius: 5px;
+        position: absolute;
+        background: #c91515;
+        transition: width 0.7s ease 0s, left 0.7s ease 0s;
+        width: 0;
     }
 }

@@ -5,23 +5,6 @@
 {% endblock %}
 
 {% block nav %}
-<script language="Javascript">
-    let ubicacionPrincipal = window.pageYOffset;
-    window.onscroll = function () {
-        let Desplazamiento_Actual = window.pageYOffset;
-        if (ubicacionPrincipal >= Desplazamiento_Actual) {
-        document.getElementById('navbar').style.top = '0';
-        }
-        else {
-        document.getElementById('navbar').style.top = '-110px';
-        window.addEventListener("scroll", function () {
-            var nav = document.querySelector("nav");
-            nav.classList.toggle("down", window.scrollY > 100);
-        })
-        }
-        ubicacionPrincipal = Desplazamiento_Actual;
-    }
-    </script>
     <nav class="navbar" id="navbar">
         <div class="logo">
         <a href="{% url 'index' %}">
@@ -36,4 +19,30 @@
             <li><a class="navbar-link" href="{% url 'contacto' %}">contacto</a></li>
         </ul>
     </nav>
+    <!--
+    <aside>
+        <div class="outer-close toggle-overlay">
+            <a class="close"><span></span></a>
+        </div>
+        <nav>
+            <ul class="navbar-responsive" id="nav-responsive">
+                <li><a class="navbar-break" href="{% url 'acerca' %}">acerca</a></li>
+                <li><a class="navbar-break" href="{% url 'work' %}">trabajo</a></li>
+                <li><a class="navbar-break" href="{% url 'opinions' %}">opiniones</a></li>
+                <li><a class="navbar-break" href="{% url 'productos' %}">productos</a></li>
+                <li><a class="navbar-break" href="{% url 'contacto' %}">contacto</a></li>
+            </ul>
+        </nav>
+    </aside>
+    -->
+    <script>
+        (function ($) {
+            $(function () {
+                $('.toggle-overlay').click(function () {
+                    $('aside').toggleClass('open');
+                    $('.bar').toggleClass('animate');
+                });
+            });
+        })(jQuery);
+    </script>
 {% endblock %}

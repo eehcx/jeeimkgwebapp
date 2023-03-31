@@ -4,9 +4,10 @@ from django.core.exceptions import ValidationError
 import random
 
 # MODELO DE CREACION DE URL PERSONALIZADO PARA CADA CLIENTE PRE-REGISTRADO
-"""  
+"""
 class UniqueCode(models.Model):
     code = models.CharField(max_length=36, unique=True)
+    id = models.CharField(max_length=100)
 
     def save_unique_code_to_database(unique_code):
         try:
@@ -14,6 +15,16 @@ class UniqueCode(models.Model):
             code.save()
         except InterruptedError: # IntegrityError
             raise ValidationError("El código ya está en uso.")
+
+    def save_to_firestore(self):
+        db = firestore.Client()
+        clients_ref = db.collection('urls')
+        new_client_ref = clients_ref.document()
+
+        new_client_ref.set({
+            'url': self.code,
+            'id': self.id,
+        })
 """
 
 # MODELO DE CREACIÓN DE CLIENTES 

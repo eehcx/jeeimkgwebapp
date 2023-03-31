@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="{% static '/css/contact.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static '/css/footer.css' %}">
 <script type="text/javascript" src="{% static '/js/loading.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/navbar.js' %}" defer></script>
 {% endblock %}
 
 {% block nav %}
@@ -29,6 +30,9 @@
     });
   }
 </script>
+<div class="hamburger-menu toggle-overlay">
+  <div class="bar"></div>
+</div>
 <header class="header-content">
   <h1 class="main-title">CONSTRUYAMOS <br> ALGO INCREIBLE</h1>
   <div class="contact-header" data-src="https://jeeimkg-static.s3.us-west-1.amazonaws.com/Fondos/main.jpg">
