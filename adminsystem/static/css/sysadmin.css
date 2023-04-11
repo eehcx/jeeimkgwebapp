@@ -1,0 +1,31 @@
+/* Base Fonts
+********************************************************************* */
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@300;400;500;700&display=swap");
+/* Base Variables
+********************************************************************* */
+/* Base Styles
+********************************************************************* */
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: #f8f9fa;
+  font-family: "Open Sans", sans-serif;
+  height: 70px;
+  margin-left: 4rem;
+  padding: 0%;
+}
+header h1 {
+  color: #212529;
+  font-weight: 500;
+  font-size: 1.5rem;
+  align-items: center;
+  display: flex;
+  height: 100%;
+}
+
+/*# sourceMappingURL=sysadmin.css.map */
