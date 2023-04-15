@@ -39,8 +39,11 @@ $cyan: #17a2b8;
     box-sizing: border-box;
 }
 
-header{
+body{
     background-color: $gray-100;
+}
+
+header{
     font-family: "Open Sans", sans-serif;
     height: 70px;
     margin-left: 4rem;
@@ -49,10 +52,36 @@ header{
     h1{
         color: $gray-900;
         font-weight: 500;
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         align-items: center;
         display: flex;
         height: 100%;
+        margin: 20px 30px;
+    }
+}
 
+.search-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 0 20px;
+
+    label {
+        margin-right: 10px;
+    }
+    
+    input[type="text"] {
+        width: 100%;
+        height: 100%;
+        border: none;
+        font-size: 14px;
+        color: #555;
+    }
+    
+    input[type="text"]:focus {
+        outline: none;
     }
 }
