@@ -3,24 +3,14 @@
 
     {% block title %}Sistema de administración{% endblock %}
 
-    {% block css %}
-        <link rel="stylesheet" href="{% static '/css/sysadmin.css' %}">
-    {% endblock %}
+{% block sidebar %}
+    {% include "layouts/sidebar.html" %}
+{% endblock %}
 
+{% block titleAdmin %}Página Principal {% endblock %}
 {% block content %}
-<header class="header-admin">
-    <div>
-        <h1>Sistema de administración</h1>
-
-        <div class="search-header">
-            <label for="search-input">Buscar:</label>
-            <input type="text" id="search-input" name="search-input" placeholder="Ingresa tu búsqueda aquí">
-        </div>
-    </div>
-</header>
-<main>
-</main>
-<footer>
-
-</footer>
+<div class="Clients-content">
+    <h3>Clientes</h3>
+    <p>Abril, 15</p>
+</div>
 {% endblock %}

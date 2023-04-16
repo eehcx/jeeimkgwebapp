@@ -3,21 +3,66 @@
 
     {% block title %}Inbox | Administración{% endblock %}
 
+{% block titleAdmin %}Visualización Mensajes{% endblock %}
 
 {% block content %}
-<style>
-    main{
-        padding-left: 10%;
-        padding-right: 5%;
-    }
-</style>
-<body>
-    <header>
-        <h1>Contacto con el Cliente</h1>
-    </header>
-    <main>
-        <label for="">Generar url: </label>
-        <button>Enviar</button>
-    </main>
-</body>
+<div class="container">
+    <div class="container-inbox">
+        <div class="card-main">
+            <div class="inbox-header">
+                <h3 class="inbox-title"><strong>Clientes Potenciales</strong></h3>
+                <p class="date-title"> <strong>Abril, 15</strong></p>
+            </div>
+            <div class="inbox-stats">
+                <div class="stats">
+                    <p class="stats-number"> <strong>26</strong> </p>
+                    <p class="stats-title">Convertidos</p>
+                </div>
+                <div class="stats">
+                    <p class="stats-number"> <strong>50</strong> </p>
+                    <p class="stats-title">Sin terminar</p>
+                </div>
+                <div class="stats">
+                    <p class="stats-number"> <strong>76</strong> </p>
+                    <p class="stats-title">Total mensajes</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="card-customers">
+            <div class="customers-header">
+                <div class="customers-title"> <strong>Ultimos clientes</strong></div>
+            </div>
+            <table>
+                <tr>
+                    <td>Joe Expeditions</td>
+                </tr>
+                <tr>
+                    <td>Montero Gym</td>
+                </tr>
+                <tr>
+                    <td>Blindados Gym</td>
+                </tr>
+                <tr>
+                    <td>Trigmar</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    <button class="btn-url">
+        <i class="fi fi-rr-link-alt"></i>
+        <span class="title"> <strong>Generar URL</strong> </span>
+    </button>
+
+    <button class="btn-add">
+        <i class="fi fi-rr-user-add"></i>
+        <span class="title"> <strong>Registrar contacto</strong> </span>
+    </button>
+
+    <button class="btn-phone">
+        <i class="fi fi-brands-whatsapp"></i>
+        <span class="title"> <strong>Ver por Numero</strong> </span>
+    </button>
+</div>
 {% endblock %}

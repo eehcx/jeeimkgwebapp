@@ -1,0 +1,114 @@
+/* Base Fonts
+********************************************************************* */
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@300;400;500;700&display=swap");
+/* Base Variables
+********************************************************************* */
+/* Base Styles
+********************************************************************* */
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::selection {
+  background: #294899;
+  color: #fff;
+}
+
+body {
+  background-color: #e9ecef;
+}
+body button {
+  cursor: pointer;
+}
+
+header {
+  font-family: "Open Sans", sans-serif;
+  height: 70px;
+  margin-left: 5rem;
+  margin-top: 1rem;
+  padding: 0%;
+}
+header h1 {
+  color: #212529;
+  font-weight: 500;
+  font-size: 1.5rem;
+  align-items: center;
+  display: flex;
+  height: 100%;
+  margin: 20px 30px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.header-content h1 {
+  margin: 0;
+}
+.header-content .search-wrapper {
+  display: flex;
+  align-items: center;
+  border-radius: 25px;
+  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.026);
+  border: 1px solid #ced4da;
+  height: 36px;
+  width: 400px;
+  margin-right: 20px;
+  margin-left: 25rem;
+}
+.header-content .search-wrapper .search-input {
+  flex: 1;
+  border: none;
+  height: 100%;
+  margin-right: 10px;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 25px;
+  color: #555;
+  outline: none;
+}
+.header-content .search-wrapper .search-input::placeholder {
+  color: #555;
+  opacity: 0.5;
+}
+.header-content .search-wrapper svg {
+  margin-right: 8px;
+  stroke-width: 2;
+  stroke: #555;
+  fill: none;
+}
+.header-content .search-wrapper button {
+  background-color: rgba(255, 255, 255, 0);
+}
+.header-content .user-wrapper {
+  display: flex;
+  align-items: center;
+}
+.header-content .user-wrapper .user-circle {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: black;
+  margin-right: 10px;
+}
+.header-content .user-wrapper .user-name {
+  font-size: 18px;
+}
+
+@media screen and (max-width: 600px) {
+  .header-content {
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  .search-wrapper {
+    margin-top: 10px;
+    margin-right: 0px;
+    margin-left: 0rem;
+  }
+}
+
+/*# sourceMappingURL=base.css.map */

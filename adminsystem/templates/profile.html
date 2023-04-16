@@ -5,8 +5,10 @@
 
     {% block css %}
         <link rel="stylesheet" href="{% static '/css/sidebar.css' %}">
-        <link rel="stylesheet" href="{% static '/css/profile.css' %}">
+        <link rel="stylesheet" href="{% static '/css/base.css' %}">
     {% endblock %}
+
+{% block titleAdmin %}Perfil de clientes{% endblock %}
 
 {% block content %}
     <main>

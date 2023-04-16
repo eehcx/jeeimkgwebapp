@@ -9,27 +9,33 @@
 <div class="area"></div>
 <nav class="main-menu">
     <ul>
+        <li class="has-subnav" id="info-li">
+            <a href="#">
+                <i class="fi fi-rr-menu-dots-vertical"></i>
+                <span class="nav-text">
+                    More Information
+                </span>
+            </a>
+        </li>
         <li>
             <a href="{% url 'adminsystem' %}">
-                <i class="fa fa-home fa-2x"></i>
+                <i class="fi fi-rr-home fi-2x"></i>
                 <span class="nav-text">
                     Home
                 </span>
             </a>
-            
         </li>
         <li class="has-subnav">
             <a href="{% url 'profile' %}">
-                <i class="fa fa-user"></i>
+                <i class="fi fi-rr-user"></i>
                 <span class="nav-text">
                     Profile
                 </span>
             </a>
-            
         </li>
         <li class="has-subnav">
             <a href="{% url 'contactClient' %}">
-                <i class="fa fa-inbox"></i>
+                <i class="fi fi-rr-comment-alt"></i>
                 <span class="nav-text">
                     Client contact
                 </span>
@@ -38,47 +44,15 @@
         </li>
         <li>
             <a href="{% url 'clients' %}">
-                <i class="fa fa-building-o fa-2x"></i>
+                <i class="fi fi-rr-users-alt"></i>
                 <span class="nav-text">
                     Fixed customers
                 </span>
             </a>
         </li>
-        <li class="has-subnav">
-            <a href="#">
-                <i class="fa fa-credit-card"></i>
-                <span class="nav-text">
-                    Advertising Budget
-                </span>
-            </a>
-        </li>
-        <li class="has-subnav">
-            <a href="{% url 'employers' %}">
-                <i class="fa fa-suitcase"></i>
-                <span class="nav-text">
-                    Employers
-                </span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="fa fa-folder"></i>
-                <span class="nav-text">
-                    Customer Projects
-                </span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="fa fa-sitemap"></i>
-                <span class="nav-text">
-                    Organization Divisions
-                </span>
-            </a>
-        </li>
         <li>
             <a href="{% url 'configuration' %}">
-                <i class="fa fa-cog"></i>
+                <i class="fi fi-rr-settings"></i>
                 <span class="nav-text">
                     Configuration
                 </span>
@@ -89,7 +63,7 @@
     <ul class="logout">
         <li>
             <a href="{% url 'login' %}">
-                    <i class="fa fa-power-off fa-2x"></i>
+                <i class="fi fi-rr-exit"></i>
                 <span class="nav-text">
                     Logout
                 </span>

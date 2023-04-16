@@ -1,87 +1,11 @@
-/* Base Fonts
-********************************************************************* */
-// Tipografías de la marca
-@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@300;400;500;700&display=swap");
+$clients-content-bg: #fff !default;
+$clients-content-border: #e5e5e5 !default;
+$clients-content-border-radius: 3px !default;
+$clients-content-padding: 15px !default;
 
-/* Base Variables
-********************************************************************* */
+$div-color: #ffffff !default;
 
-// Path: adminsystem\static\sass\admin.scss
-$gray-100: #f8f9fa;
-$gray-200: #e9ecef;
-$gray-300: #dee2e6;
-$gray-400: #ced4da;
-$gray-500: #adb5bd;
-$gray-600: #6c757d;
-$gray-700: #495057;
-$gray-800: #343a40;
-$gray-900: #212529;
-
-// Path: adminsystem\static\sass\admin.scss
-$blue: #007bff;
-$indigo: #6610f2;
-$purple: #6f42c1;
-$pink: #e83e8c;
-$red: #dc3545;
-$orange: #fd7e14;
-$yellow: #ffc107;
-$green: #28a745;
-$teal: #20c997;
-$cyan: #17a2b8;
-
-/* Base Styles
-********************************************************************* */
-
-* {
-    border: 0;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body{
-    background-color: $gray-100;
-}
-
-header{
-    font-family: "Open Sans", sans-serif;
-    height: 70px;
-    margin-left: 4rem;
-    padding: 0%;
-
-    h1{
-        color: $gray-900;
-        font-weight: 500;
-        font-size: 1.6rem;
-        align-items: center;
-        display: flex;
-        height: 100%;
-        margin: 20px 30px;
-    }
-}
-
-.search-header{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 35px;
-    background-color: #f2f2f2;
-    border-radius: 10px;
-    padding: 0 20px;
-
-    label {
-        margin-right: 10px;
-    }
-    
-    input[type="text"] {
-        width: 100%;
-        height: 100%;
-        border: none;
-        font-size: 14px;
-        color: #555;
-    }
-    
-    input[type="text"]:focus {
-        outline: none;
-    }
+.Clients-content{
+    background-color: $div-color;
+    margin-left: 50px;
 }

@@ -1,14 +1,11 @@
-@charset "ISO-8859-1";
-@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
-
-
+@import url("https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css");
+@import url("https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css");
 @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@200;300;400;500&display=swap");
-
-.fa-2x {
+.fi-2x {
   font-size: 2em;
 }
 
-.fa {
+.fi {
   position: relative;
   display: table-cell;
   width: 60px;
@@ -17,7 +14,6 @@
   vertical-align: middle;
   font-size: 20px;
 }
-
 .main-menu:hover,
 nav.main-menu.expanded {
   width: 250px;

@@ -1,0 +1,224 @@
+/* Base Fonts
+********************************************************************* */
+// Tipografías de la marca
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@300;400;500;700&display=swap");
+
+/* Base Variables
+********************************************************************* */
+
+// colores de divs
+
+$blue-seleccion: #1f305e;
+$purple-seleccion: #a6a6e1;
+$green-seleccion: #a6e1ac;
+$red-seleccion: #dc3545;
+$yellow-seleccion: #ffc107;
+$orange-seleccion: #e1bda6;
+$gray-seleccion: #ffffff;
+
+.container {
+    display: flex;
+}
+
+body{
+    font-family: 'Open sans', sans-serif;
+}
+
+.container-inbox {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.card-main{
+    display: flex;
+    float: left;
+    width: 450px;
+    height: 200px;
+    //overflow-y: scroll;
+    //overflow-x: hidden;
+
+    background-color: $gray-seleccion;
+    margin-left: 90px;
+    margin-right: 100px;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.026);
+
+    .inbox-header{
+        display: flex;
+        position: fixed;
+        width: 100%;
+        height: 25px;
+        //z-index: 9999;
+
+        .inbox-title{
+            display: block;
+            float: left;
+            margin-top: auto;
+            font-size: 20px;
+            font-weight: 500;
+            color: $blue-seleccion;
+        }
+
+        .date-title{
+            display: block;
+            margin-left: 120px;
+            margin-top: auto;
+            float: right;
+            font-size: 15px;
+            font-weight: 500;
+            color: #000;
+        }
+    }
+
+    .inbox-stats{
+        display: flex;
+        margin-top: 60px;
+
+        div.stats{
+            margin-right: 30px;
+        }
+
+        .stats-number{
+            display: block;
+            margin-bottom: 5px;
+            font-size: 25px;
+            font-weight: 500;
+            color: $blue-seleccion;
+        }
+
+        .stats-title{
+            display: block;
+            margin-bottom: 5px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #000;
+        }
+    }
+}
+
+.card-customers {
+    display: flex;
+    float: left;
+    width: 450px;
+    height: 290px;
+    background-color: $gray-seleccion;
+    margin-left: 90px;
+    margin-right: 100px;
+    margin-top: 20px;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.026);
+
+    .customers-header {
+        display: flex;
+        position: fixed;
+        width: 100%;
+        height: 25px;
+
+        .customers-title {
+            display: block;
+            float: left;
+            margin-top: auto;
+            font-size: 20px;
+            font-weight: 500;
+            color: $blue-seleccion;
+        }
+    }
+
+    table {
+        border-collapse: collapse;
+        margin-top: 30px;
+        width: 100%;
+    }
+    
+    th, td {
+        text-align: left;
+        padding: 8px;
+        font-weight: 600;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    tr:last-child td {
+        border-bottom: none;
+    }
+}
+
+.btn-url {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $orange-seleccion;
+    border-radius: 20px;
+    width: 200px;
+    height: 60px;
+    padding: auto;
+
+    .fi {
+        margin-top: 17px;
+    }
+    
+    i {
+        margin: auto;
+    }
+
+    .title{
+        font-size: 16px;
+        padding-right: 30px;
+        color: #131313;
+    }
+}
+
+.btn-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $purple-seleccion;
+    border-radius: 20px;
+    margin-left: 20px;
+    width: 200px;
+    height: 60px;
+    padding: auto;
+
+    .fi {
+        margin-top: 17px;
+    }
+    
+    i {
+        margin: auto;
+    }
+
+    .title{
+        font-size: 16px;
+        padding-right: 30px;
+        color: #131313;
+    }
+}
+
+.btn-phone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $green-seleccion;
+    border-radius: 20px;
+    margin-left: 20px;
+    width: 200px;
+    height: 60px;
+    padding: auto;
+
+    .fi {
+        margin-top: 17px;
+    }
+    
+    i {
+        margin: auto;
+    }
+
+    .title{
+        font-size: 16px;
+        padding-right: 30px;
+        color: #131313;
+    }
+}
+

@@ -9,19 +9,61 @@
     <!--Icono de la página-->
     <link rel="shortcut icon" href="https://jeeimkg-static.s3.us-west-1.amazonaws.com/images/ico/ico.png" type="image/x-icon">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
     {%block metalinks %}
     {% endblock %}
     
     {% block css %}
+        <link rel="stylesheet" href="{% static '/css/base.css' %}">
+        <link rel="stylesheet" href="{% static '/css/inbox.css' %}">
     {% endblock %}
 </head>
 <body>
     {% block sidebar %}
         {% include "layouts/sidebar.html" %}
     {% endblock %}
-    {% block content %}
-    {% endblock %}
+    <header class="header-admin">
+        <div class="header-content">
+            <h1>{% block titleAdmin %}{% endblock %}</h1>
+        
+            <!--
+            <div class="search-wrapper">
+                <input class="search-input" type="text" placeholder="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-search" viewBox="0 0 24 24">
+                    <defs></defs>
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="M21 21l-4.35-4.35"></path>
+                </svg>
+            </div>
+            -->
+
+            <form action="{% url 'search' %}" method="get">
+                <div class="search-wrapper">
+                    <input class="search-input" type="text" name="q" placeholder="Search">
+                    <button type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-search" viewBox="0 0 24 24">
+                            <defs></defs>
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="M21 21l-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+
+            <div class="user-wrapper">
+                <div class="user-circle"></div>
+                <span class="user-name">Enoc Hernadez</span>
+            </div>
+
+        </div>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
 </body>
+<!-- Modal -->
 
     {% block linksjs %}
     {% endblock %}

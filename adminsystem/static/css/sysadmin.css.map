@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../sass/admin.scss"],"names":[],"mappings":"AAAA;AAAA;AAGQ;AAER;AAAA;AA0BA;AAAA;AAGA;EACI;EACA;EACA;EACA;;;AAGJ;EACI,kBAjCO;;;AAoCX;EACI;EACA;EACA;EACA;;AAEA;EACI,OAnCG;EAoCH;EACA;EACA;EACA;EACA;EACA;;;AAIR;EACI;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI;;AAGJ;EACI;EACA;EACA;EACA;EACA;;AAGJ;EACI","file":"sysadmin.css"}
+{"version":3,"sourceRoot":"","sources":["../sass/admin.scss"],"names":[],"mappings":"AAOA;EACI,kBAHQ;EAIR","file":"sysadmin.css"}
