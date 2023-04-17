@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+import requests
 from django.views.decorators.csrf import csrf_protect
 from .forms import ContactForm
 
@@ -14,8 +15,13 @@ def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            form.save()  # Guarda el modelo Contact en la base de datos de Django y en Firestore.
-            return redirect('index')
+            # Realiza una solicitud POST a la API REST para guardar los datos de contacto
+            response = requests.post('http://localhost:3000/contacts', json=form.cleaned_data)
+            
+            if response.status_code == 200:
+                return redirect('index')
+            else:
+                form.add_error(None, 'Hubo un error al enviar el mensaje. Por favor inténtalo de nuevo.')
     else:
         form = ContactForm()
     return render(request, 'contact.html', {'form': form})

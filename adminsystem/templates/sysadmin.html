@@ -9,8 +9,42 @@
 
 {% block titleAdmin %}Página Principal {% endblock %}
 {% block content %}
-<div class="Clients-content">
-    <h3>Clientes</h3>
-    <p>Abril, 15</p>
+<div class="container">
+    <div class="container-inbox">
+        <div class="card-main">
+            <div class="inbox-header">
+                <h3 class="inbox-title"><strong>Clientes Potenciales</strong></h3>
+                <p class="date-title"> <strong>Abril, 15</strong></p>
+            </div>
+            <div class="inbox-stats">
+                <div class="stats">
+                    <p class="stats-number"> <strong>26</strong> </p>
+                    <p class="stats-title">Convertidos</p>
+                </div>
+                <div class="stats">
+                    <p class="stats-number"> <strong>50</strong> </p>
+                    <p class="stats-title">Sin terminar</p>
+                </div>
+                <div class="stats">
+                    <p class="stats-number"> <strong>76</strong> </p>
+                    <p class="stats-title">Total mensajes</p>
+                </div>
+            </div>
+        </div>
+
+    <button class="btn-url">
+        <i class="fi fi-rr-link-alt"></i>
+        <span class="title"> <strong>Generar URL</strong> </span>
+    </button>
+
+    <button class="btn-add">
+        <i class="fi fi-rr-user-add"></i>
+        <span class="title"> <strong>Registrar contacto</strong> </span>
+    </button>
+
+    <button class="btn-phone">
+        <i class="fi fi-brands-whatsapp"></i>
+        <span class="title"> <strong>Ver por Numero</strong> </span>
+    </button>
 </div>
 {% endblock %}

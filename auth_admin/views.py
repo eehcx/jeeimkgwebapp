@@ -27,20 +27,18 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 @csrf_protect
-#@csrf_exempt
-#@require_http_methods(["GET", "POST"])
 def login(request):
     if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        firebase_token = request.POST.get('firebase_token')
-        user = authenticate(request, email=email, password=password)
+        uid = request.POST.get('uid')
 
-        if user is not None:
-            login(request, user)
-            # redireccionamos al usuario a la página de inicio
-            return HttpResponseRedirect('/adminsystem/') 
-        else:
-            return render(request, 'login.html', {'error_message': 'Error de autenticación con Firebase'})
+        try:
+            # Genera un token personalizado para el usuario
+            custom_token = auth.create_custom_token(uid)
+
+            # Redirige al usuario a la página de administración
+            return redirect('/administration/')
+        except Exception as error:
+            print(error)
+            return render(request, 'login.html', {'error_message': 'Error al generar el token personalizado'})
     else:
         return render(request, 'login.html')

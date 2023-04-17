@@ -3,8 +3,6 @@
     {% block title %}Login | JEEIMKG{% endblock %}
     {% block css %}
         <link rel="stylesheet" type="text/css" href="{% static '/css/login.css' %}">
-        <!--Agrega mi archivo js auth_login--> 
-        <script src="{% static '/js/auth_login.js' %}"></script> 
         <!-- Firebase App (el primer script debe ir siempre primero) -->
         <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js"></script>
         <!-- Firebase Authentication -->
@@ -13,31 +11,27 @@
         <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js"></script>
     {% endblock %}
 
-    {% block content %}
-    {% if messages %}
-      <ul>
-        {% for message in messages %}
-          <li>{{ message }}</li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-    <form method="POST" id="login-form" action="{% url 'login' %}">
-      {% csrf_token %}
-      <div class="login-box">
-        <h2>jeeimkg sysadmin</h2>
-        {% if error_message %}
-          <p>{{ error_message }}</p>
-        {% endif %}
-        <div class="user-box">
-          <input type="email" name="email" required>
-          <label for="email">email:</label>
-        </div>
-        <div class="user-box">
-          <input type="password" name="password" required>
-          <label for="password">password:</label>
-        </div>
-        <input type="hidden" name="firebase_token" id="firebase_token" value="">
-        <button type="submit">LOGIN</button>
+{% block content %}
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <form method="POST" id="login-form" action="{% url 'login' %}">
+    {% csrf_token %}
+    <div class="login-box">
+      <h2>jeeimkg sysadmin</h2>
+      {% if error_message %}
+        <p>{{ error_message }}</p>
+      {% endif %}
+      <div class="user-box">
+        <input type="text" name="uid" required>
+        <label for="uid">UID:</label>
       </div>
-    </form>
-  {% endblock %}
+      <input type="hidden" name="custom_token" id="custom_token" value="{{ custom_token }}">
+      <button type="submit">LOGIN</button>
+    </div>
+  </form>    
+{% endblock %}

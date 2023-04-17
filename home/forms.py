@@ -18,3 +18,4 @@ class ContactForm(forms.ModelForm):
             'message': forms.Textarea(attrs={'class': 'feedback-input','placeholder': 'Mensaje', 'label': ''}),
         }
         label_suffix = ''
+
