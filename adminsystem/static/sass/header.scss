@@ -179,6 +179,7 @@ header{
     align-items: center;
     justify-content: center;
     background-color: #fff;
+    transition: all 0.7s ease-in-out;
     border-radius: 20px;
     width: 200px;
     height: 60px;
@@ -211,7 +212,6 @@ header{
     .btn-admin-card:hover {
         background-color: #090909;
         color: #fff;
-        transition: 0.5s;
         span{
             color: #fff;
         }

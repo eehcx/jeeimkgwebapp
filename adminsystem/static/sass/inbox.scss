@@ -8,12 +8,17 @@
 
 // colores de divs
 
+$transition: all 0.5s ease-in-out;
+
 $blue-seleccion: #1f305e;
 $purple-seleccion: #a6a6e1;
+$purple-seleccion-hover: #8b8bc9;
 $green-seleccion: #a6e1ac;
+$green-seleccion-hover: #8bc991;
 $red-seleccion: #dc3545;
 $yellow-seleccion: #ffc107;
 $orange-seleccion: #e1bda6;
+$orange-seleccion-hover: #c99b8b;
 $gray-seleccion: #ffffff;
 
 .container {
@@ -67,6 +72,7 @@ body{
             margin-top: auto;
             float: right;
             font-size: 15px;
+            font-weight: bold;
             font-weight: 500;
             color: #000;
         }
@@ -150,6 +156,7 @@ body{
     align-items: center;
     justify-content: center;
     background-color: $orange-seleccion;
+    transition: $transition;
     border-radius: 20px;
     width: 200px;
     height: 60px;
@@ -165,9 +172,13 @@ body{
 
     .title{
         font-size: 16px;
-        padding-right: 30px;
+        padding-right: 20px;
         color: #131313;
     }
+}
+
+.btn-url:hover {
+    background-color: $orange-seleccion-hover;
 }
 
 .btn-add {
@@ -175,6 +186,7 @@ body{
     align-items: center;
     justify-content: center;
     background-color: $purple-seleccion;
+    transition: $transition;
     border-radius: 20px;
     margin-left: 20px;
     width: 200px;
@@ -194,6 +206,10 @@ body{
         padding-right: 30px;
         color: #131313;
     }
+}
+
+.btn-add:hover {
+    background-color: $purple-seleccion-hover;
 }
 
 .btn-phone {
@@ -201,6 +217,7 @@ body{
     align-items: center;
     justify-content: center;
     background-color: $green-seleccion;
+    transition: $transition;
     border-radius: 20px;
     margin-left: 20px;
     width: 200px;
@@ -220,5 +237,48 @@ body{
         padding-right: 30px;
         color: #131313;
     }
+
 }
 
+.btn-phone:hover {
+    background-color: $green-seleccion-hover;
+}
+
+
+// styles for the modal
+div.modal{
+    border-radius: 20px;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+        
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+        
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+}

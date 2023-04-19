@@ -55,22 +55,45 @@ def profile(request):
     return render(request, 'profile.html')
 
 def contactClient(request):
-    return render(request, 'inbox.html', {})
+    # Obtener todos los datos de la colección "Customers" en orden inverso
+    customers = db.child("Customers").get().val()
+    customers = list(customers.values())[::-1]
 
-def clients(request):
-    # Obtener todos los datos de la colección "Customers"
-    customers = db.child("Customers").get()
+    # Crear una lista para almacenar los nombres de los últimos 4 clientes
+    last_customers = []
+
+    # Iterar sobre los últimos 4 clientes y agregar sus nombres a la lista
+    for i in range(4):
+        if i >= len(customers):
+            break
+        last_customers.append(customers[i]['name'])
+
+    # Pasar los nombres de los últimos 4 clientes al contexto para que se puedan renderizar en el template
+    context = {
+        'last_customers': last_customers,
+    }
+
+    return render(request, 'inbox.html', context)
+
+def clients(request, start=0, end=12):
+    # Obtener todos los datos de la colección "Customers" en orden inverso
+    customers = db.child("Customers").get().val()
+    customers = list(customers.values())[::-1]
 
     # Crear una lista para almacenar los datos de los clientes
     client_data = []
 
     # Iterar sobre los datos obtenidos y agregarlos a la lista
-    for customer in customers.each():
-        client_data.append(customer.val())
+    for i in range(start, end):
+        if i >= len(customers):
+            break
+        client_data.append(customers[i])
 
     # Pasar los datos de los clientes al contexto para que se puedan renderizar en el template
     context = {
-        'client_data': client_data
+        'client_data': client_data,
+        'start': start,
+        'end': end
     }
 
     # Agregar esta línea para imprimir los datos en la consola

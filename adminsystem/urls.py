@@ -8,6 +8,7 @@ urlpatterns = [
     path('profile/',views.profile, name='profile'),
     path('inbox/',views.contactClient, name='contactClient'),
     path('clients/',views.clients, name='clients'),
+    path('clients/<int:start>/<int:end>/', views.clients, name='clients'),
     path('employers/',views.employers, name='employers'),
     path('search/', views.search, name='search')
 ]

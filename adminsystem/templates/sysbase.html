@@ -12,13 +12,31 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <!-- SDK de Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
     {%block metalinks %}
+    {% endblock %}
+
+    {%block js %}
     {% endblock %}
     
     {% block css %}
         <link rel="stylesheet" href="{% static '/css/base.css' %}">
         <link rel="stylesheet" href="{% static '/css/inbox.css' %}">
     {% endblock %}
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyBXEiXDLhTkwYUCVD4oANFZeMtzqEoPLls",
+            authDomain: "jeeimkg-5705b.firebaseapp.com",
+            databaseURL: "https://jeeimkg-5705b-default-rtdb.firebaseio.com/",
+            projectId: "jeeimkg-5705b",
+            storageBucket: "jeeimkg-5705b.appspot.com",
+            messagingSenderId: "192952472904",
+            appId: "jeeimkg-5705b"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
 </head>
 <body>
     {% block sidebar %}
@@ -27,17 +45,6 @@
     <header class="header-admin">
         <div class="header-content">
             <h1>{% block titleAdmin %}{% endblock %}</h1>
-        
-            <!--
-            <div class="search-wrapper">
-                <input class="search-input" type="text" placeholder="Search">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-search" viewBox="0 0 24 24">
-                    <defs></defs>
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <path d="M21 21l-4.35-4.35"></path>
-                </svg>
-            </div>
-            -->
 
             <form action="{% url 'search' %}" method="get">
                 <div class="search-wrapper">
