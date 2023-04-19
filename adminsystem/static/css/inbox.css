@@ -234,4 +234,35 @@ div.modal {
   cursor: pointer;
 }
 
+.tables-container {
+  display: flex;
+  float: right;
+  margin-top: 90px;
+}
+
+#expendable-data-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  margin-bottom: 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 0.1rem;
+}
+#expendable-data-table th,
+#expendable-data-table td {
+  padding: 1rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+#expendable-data-table th {
+  text-align: left;
+  font-size: 15px;
+}
+#expendable-data-table tbody tr {
+  font-size: 13px;
+}
+#expendable-data-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
 /*# sourceMappingURL=inbox.css.map */

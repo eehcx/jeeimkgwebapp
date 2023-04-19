@@ -10,6 +10,30 @@
 {% endblock %}
 
 {% block content %}
+<div class="tables-container">
+    <table id="expendable-data-table" class="table display nowrap" style="width:100%">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Tipo Negocio</th>
+                <th>Nicho</th>
+                <th>Tamaño</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pre_customer in pre_customers %}
+            <tr>
+            <td>{{ pre_customer.nombre }}</td>
+            <td>{{ pre_customer.numero }}</td>
+            <td>{{ pre_customer.tipoNegocio }}</td>
+            <td>{{ pre_customer.nicho }}</td>
+            <td>{{ pre_customer.tamano }}</td>
+            </tr> 
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 <div class="container">
     <div class="container-inbox">
         <div class="card-main">
@@ -46,7 +70,7 @@
             </table>
         </div>
     </div>
-    
+
     <button class="btn-url">
         <i class="fi fi-rr-link-alt"></i>
         <span class="title"> <strong>Generar URL Unica</strong> </span>
@@ -63,11 +87,10 @@
     </button>
 </div>
 
-
 <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <p>Contenido del modal flotante</p>
+        <p>Hola Mundo</p>
     </div>
 </div>
 

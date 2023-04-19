@@ -44,7 +44,6 @@ def get_data_from_api():
         return None
 """
 
-
 def sysadmin(request):
     return render(request, 'sysadmin.html', {})
 
@@ -59,6 +58,16 @@ def contactClient(request):
     customers = db.child("Customers").get().val()
     customers = list(customers.values())[::-1]
 
+    """
+    # Obtener todos los datos de la colección "Contacts"
+    contacts = db.child("contacts").get().val()
+    contacts = list(contacts.values())
+    """
+
+    # Obtener todos los datos de la colección "Pre-Customers"
+    pre_customers = db.child("Pre-Customers").get().val()
+    pre_customers = list(pre_customers.values())
+
     # Crear una lista para almacenar los nombres de los últimos 4 clientes
     last_customers = []
 
@@ -68,9 +77,11 @@ def contactClient(request):
             break
         last_customers.append(customers[i]['name'])
 
-    # Pasar los nombres de los últimos 4 clientes al contexto para que se puedan renderizar en el template
+    # Pasar los nombres de los últimos 4 clientes, los datos de la colección "Contacts" y los datos de la colección "Pre-Customers" al contexto
     context = {
         'last_customers': last_customers,
+        #'contacts': contacts,
+        'pre_customers': pre_customers
     }
 
     return render(request, 'inbox.html', context)
@@ -100,7 +111,6 @@ def clients(request, start=0, end=12):
     print(client_data)
 
     return render(request, 'clients.html', context)
-
 
 """
 def clients(request):

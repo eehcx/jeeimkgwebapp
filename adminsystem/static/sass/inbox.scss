@@ -282,3 +282,36 @@ div.modal{
         cursor: pointer;
     }
 }
+
+// styles for the table
+
+.tables-container{
+    display:flex;
+    float: right;
+    margin-top: 90px;
+}
+
+#expendable-data-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    margin-bottom: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 0.1rem;
+    th,
+    td {
+      padding: 1rem;
+      vertical-align: top;
+      border-top: 1px solid #dee2e6;
+    }
+    th {
+      text-align: left;
+      font-size: 15px;
+    }
+    tbody tr {
+      font-size: 13px;
+    }
+    tbody tr:hover {
+      background-color: #f8f9fa;
+    }
+  }
