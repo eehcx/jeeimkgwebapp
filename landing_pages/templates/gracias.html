@@ -1,0 +1,24 @@
+{% extends "layouts/baseForm.html" %}
+{% load static %}
+
+{% block title %}Gracias | JEEIMKG{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/gracias.css' %}">
+    <link rel="stylesheet" href="{% static '/css/landingFooter.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<body>
+    <div class="container">
+        <h1>¡Gracias por llenar el formulario!</h1>
+        <p>Tu información ha sido recibida satisfactoriamente.</p>
+        <a href="{{ '/' }}" class="btn btn-primary">Volver al índice</a>
+    </div>
+</body>
+{% endblock %}
+
+{% block footer %}
+    {% include "layouts/landingFooter.html" %}
+{% endblock %}

@@ -4,81 +4,103 @@ from django.views.decorators.csrf import csrf_protect
 from django.core.exceptions import ValidationError
 from django.utils.crypto import get_random_string
 from .forms import ClientForm
-#from .models import UniqueCode
+import firebase_admin, requests, pyrebase, os
 from firebase_admin import firestore # si falla el registro añadir el import firebase_Admin
-import os
 
-# VARIABLES DE ENTORNO FIRESTORE
-#os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./jeeimkgServiceKey.json"
-#db = firestore.Client()
+config = {
+    "apiKey": "AIzaSyBXEiXDLhTkwYUCVD4oANFZeMtzqEoPLls",
+    "authDomain": "jeeimkg-5705b.firebaseapp.com",
+    "databaseURL": "https://jeeimkg-5705b-default-rtdb.firebaseio.com/",
+    "storageBucket": "jeeimkg-5705b.appspot.com"
+}
 
-# URL UNICA POR CADA USUARIO
-"""   
-def generate_unique_code():
-    code = get_random_string(length=36)
-    try:
-        code_obj = UniqueCode.objects.create(code=code)
-        code_obj.save()
-        return code
-    except InterruptedError:
-        return generate_unique_code()
+firebase = pyrebase.initialize_app(config)
+db = firebase.database()
 
-def landing_page(request, code):
-    try:
-        UniqueCode.objects.get(code=code)
-        return render(request, 'inicia.html')
-    except UniqueCode.DoesNotExist:
-        return redirect('invalid_code')
 
-def send_code_to_user(email):
-    unique_code = generate_unique_code()
-    # Enviar el código único al usuario a través de correo electrónico
+def mi_vista(request):
+    # Recuperar todos los documentos de la colección "urls"
+    documentos = db.child("urls").get().val()
 
-def invalid_code(request):
-    return render(request, 'invalid_code.html') 
-"""
+    # Verificar si alguno de los documentos contiene un código válido
+    código_válido = False
+    for doc_id, doc_data in documentos.items():
+        if "code" in doc_data and "used" in doc_data:
+            if doc_data["used"] == False and request.path == doc_data["code"]:
+                código_válido = True
+                break
+
+    if código_válido:
+        # Si se proporcionó un código válido, renderizar la vista
+        return render(request, 'pruebas.html')
+    else:
+        # Si no se proporcionó un código válido, mostrar un mensaje de error
+        return HttpResponse('Código no válido')
+
 # FORMULARIO DE REGISTRO DE NUEVOS CLIENTES
 @csrf_protect
 def starthere(request):
     form = ClientForm(request.POST)
     if form.is_valid():
         # Obtener los datos del formulario
-        nombre = form.cleaned_data['nombre']
+        name = form.cleaned_data['name']
         email = form.cleaned_data['email']
-        telefono = form.cleaned_data['telefono']
+        phoneNumber = form.cleaned_data['phoneNumber']
         sector = form.cleaned_data['sector']
-        servicio = form.cleaned_data['servicio']
-        #redes_sociales = form.cleaned_data['redes_sociales']
+        service = form.cleaned_data['service']
         redes_sociales1 = form.cleaned_data.get('redes_sociales1', [])
         redes_sociales2 = form.cleaned_data.get('redes_sociales2', [])
-        redes_sociales = redes_sociales1 + redes_sociales2
-        ingresos = form.cleaned_data['ingresos']
-        direccion = form.cleaned_data['direccion']
-        necesidades = form.cleaned_data['necesidades']
+        socialMedia = redes_sociales1 + redes_sociales2
+        income = form.cleaned_data['income']
+        address = form.cleaned_data['address']
+        needs = form.cleaned_data['needs']
+        businessType = form.cleaned_data['businessType']
+        niche = form.cleaned_data['niche']
+        businessSize = form.cleaned_data['businessSize'] 
+        goals = form.cleaned_data['goals']
+        areaOfInterest = form.cleaned_data['areaOfInterest']
+        budget = form.cleaned_data['budget']
+        time = form.cleaned_data['time']
 
-        # Crear un coleccion con los datos
+        # Crear un diccionario con los datos del formulario
         datos_empresa = {
-            'nombre': nombre,
+            'name': name,
             'email': email,
-            'telefono': telefono,
+            'phoneNumber': phoneNumber,
             'sector': sector,
-            'servicio': servicio,
-            'redes_sociales': redes_sociales,
-            'ingresos': ingresos,
-            'direccion': direccion,
-            'necesidades': necesidades,
+            'service': service,
+            'socialMedia': socialMedia,
+            'income': income,
+            'address': address,
+            'needs': needs,
+            'businessType': businessType,
+            'niche': niche,
+            'businessSize': businessSize,
+            'goals': goals,
+            'areaOfInterest': areaOfInterest,
+            'budget': budget,
+            'time': time
         }
 
-        # Guardar los datos en Firestore
-        db.collection('clients').add(datos_empresa)
+        # Hacer una solicitud POST a tu API REST con los datos del formulario
+        url = 'https://restapi-jeeimkg.onrender.com/customers'
+        response = requests.post(url, json=datos_empresa)
 
-        # Renderizar la plantilla de confirmación
-        return redirect('index')
+        if response.ok:
+            # Si la solicitud fue exitosa, redirigir a la página de confirmación
+            return redirect('gracias')
+        else:
+            # Si la solicitud falló, renderizar la plantilla del formulario con errores
+            form.add_error(None, 'Error al guardar los datos. Por favor intenta de nuevo.')
+            return render(request, 'inicia.html', {'form': form})
     else:
-        print(form.errors)
-        # Renderizar la plantilla del formulario con errores
+        # Si el formulario no es válido, renderizar la plantilla del formulario con errores
         return render(request, 'inicia.html', {'form': form})
     
 
 def employs(request):
     return render(request, 'employs.html')
+
+
+def gracias(request):
+    return render(request, 'gracias.html')

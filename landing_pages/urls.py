@@ -1,9 +1,9 @@
-from django.urls import path, include
+from django.urls import path, include, re_path
 from . import views
 
 urlpatterns = [
-    #path('<str:code>/', views.starthere, name='inicia'),
+    #re_path(r'^.*$', views.mi_vista , name='inicio'),
     path('form_client/', views.starthere, name='inicia'),
-    #path('invalid_code/', views.invalid_code, name='invalid_code'),
-    path('GzoufrRRhZJS84Sz3b8U', views.employs, name='empleados')
+    path('GzoufrRRhZJS84Sz3b8U', views.employs, name='empleados'),
+    path('form_client/finalized/', views.gracias, name='gracias'),
 ]

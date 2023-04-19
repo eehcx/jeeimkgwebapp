@@ -17,11 +17,11 @@
         {% csrf_token %}
         <h1>Bienvenido a casa</h1>
         <p>Termina tu registro final, requerimos de la siguiente información para calcular el precio de tu servicio </p>
-        {{ form.nombre }}
+        {{ form.name }}
         {{ form.email }}
-        {{ form.telefono }}
+        {{ form.phoneNumber }}
         {{ form.sector }}
-        {{ form.servicio }}
+        {{ form.service }}
         <div class="check">
             <label class="label-check">Selecciona las redes sociales que manejas</label>
             <div class="checkbox-container">
@@ -43,9 +43,16 @@
                 </div>
             </div>
         </div>
-        {{ form.ingresos }}
-        {{ form.direccion }}
-        {{ form.necesidades }}
+        {{ form.income }}
+        {{ form.address }}
+        {{ form.needs }}
+        {{ form.businessType }}
+        {{ form.niche }}
+        {{ form.goals }}
+        {{ form.businessSize}}
+        {{ form.areaOfInterest }}
+        {{ form.budget }}
+        {{ form.time }}
         <input type="submit" value="siguiente"/>
     </form>               
 </main>
