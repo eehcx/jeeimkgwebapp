@@ -9,42 +9,24 @@
 
 {% block titleAdmin %}Página Principal {% endblock %}
 {% block content %}
-<div class="container">
-    <div class="container-inbox">
-        <div class="card-main">
-            <div class="inbox-header">
-                <h3 class="inbox-title"><strong>Clientes Potenciales</strong></h3>
-                <p class="date-title"> <strong>Abril, 15</strong></p>
-            </div>
-            <div class="inbox-stats">
-                <div class="stats">
-                    <p class="stats-number"> <strong>26</strong> </p>
-                    <p class="stats-title">Convertidos</p>
-                </div>
-                <div class="stats">
-                    <p class="stats-number"> <strong>50</strong> </p>
-                    <p class="stats-title">Sin terminar</p>
-                </div>
-                <div class="stats">
-                    <p class="stats-number"> <strong>76</strong> </p>
-                    <p class="stats-title">Total mensajes</p>
-                </div>
-            </div>
-        </div>
-
-    <button class="btn-url">
-        <i class="fi fi-rr-link-alt"></i>
-        <span class="title"> <strong>Generar URL</strong> </span>
-    </button>
-
-    <button class="btn-add">
-        <i class="fi fi-rr-user-add"></i>
-        <span class="title"> <strong>Registrar contacto</strong> </span>
-    </button>
-
-    <button class="btn-phone">
-        <i class="fi fi-brands-whatsapp"></i>
-        <span class="title"> <strong>Ver por Numero</strong> </span>
-    </button>
+<div class="main-container">
+    <div class="container-admin">
+        <button class="btn-admin-card">
+            <i class="fi fi-sr-users-alt"></i>
+            <span class="title"> <strong>Clientes</strong> </span>
+        </button>
+        <button class="btn-admin-card">
+            <i class="fi fi-sr-clock"></i>
+            <span class="title"> <strong>En espera</strong> </span>
+        </button>
+        <button class="btn-admin-card">
+            <i class="fi fi-sr-tags"></i>
+            <span class="title"> <strong>Servicios</strong> </span>
+        </button>
+        <button class="btn-admin-card">
+            <i class="fi fi-sr-comment"></i>
+            <span class="title"> <strong>Opiniones</strong> </span>
+        </button>
+    </div>
 </div>
 {% endblock %}

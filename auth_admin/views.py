@@ -10,9 +10,9 @@ from django.contrib import messages
 from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse, HttpResponseRedirect
 from django.views.decorators.http import require_http_methods
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./jeeimkgServiceKey.json"
-db = firestore.Client()
-db = get_firestore_client()
+#os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./jeeimkgServiceKey.json"
+#db = firestore.Client()
+#db = get_firestore_client()
 
 """| Vista que me crea usuarios apartir de mi Formulario |"""
 @csrf_protect
@@ -29,16 +29,23 @@ def signup(request):
 @csrf_protect
 def login(request):
     if request.method == 'POST':
-        uid = request.POST.get('uid')
+        # Obtener los datos del formulario
+        email = request.POST['email']
+        password = request.POST['password']
 
-        try:
-            # Genera un token personalizado para el usuario
-            custom_token = auth.create_custom_token(uid)
+        # Hacer la solicitud a la API de login
+        response = requests.post('https://restapi-jeeimkg.onrender.com/login', json={'email': email, 'password': password})
 
-            # Redirige al usuario a la página de administración
-            return redirect('/administration/')
-        except Exception as error:
-            print(error)
-            return render(request, 'login.html', {'error_message': 'Error al generar el token personalizado'})
-    else:
-        return render(request, 'login.html')
+        # Verificar la respuesta de la API
+        if response.status_code == 200:
+            message = 'Inicio de sesión exitoso'
+        elif response.status_code == 401:
+            message = 'Contraseña incorrecta'
+        else:
+            message = 'Usuario no encontrado'
+
+        # Renderizar la plantilla con el mensaje de respuesta
+        return render(request, 'login.html', {'message': message})
+
+    # Si la solicitud no es POST, renderizar el formulario de login
+    return render(request, 'login.html')

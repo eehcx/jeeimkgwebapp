@@ -9,8 +9,8 @@ from firebase_admin import firestore # si falla el registro añadir el import fi
 import os
 
 # VARIABLES DE ENTORNO FIRESTORE
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./jeeimkgServiceKey.json"
-db = firestore.Client()
+#os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./jeeimkgServiceKey.json"
+#db = firestore.Client()
 
 # URL UNICA POR CADA USUARIO
 """   

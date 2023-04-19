@@ -1,6 +1,15 @@
-.Clients-content {
+@import url("https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css");
+.card-admin {
+  display: flex;
+  float: left;
+  width: 30px;
+  height: 100px;
   background-color: #ffffff;
-  margin-left: 50px;
+  margin-left: 90px;
+  margin-right: 100px;
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.026);
 }
 
 /*# sourceMappingURL=sysadmin.css.map */

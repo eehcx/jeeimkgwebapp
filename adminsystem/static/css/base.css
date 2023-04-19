@@ -1,6 +1,7 @@
 /* Base Fonts
 ********************************************************************* */
 @import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@300;400;500;700&display=swap");
+@import url("https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css");
 /* Base Variables
 ********************************************************************* */
 /* Base Styles
@@ -109,6 +110,52 @@ header h1 {
     margin-right: 0px;
     margin-left: 0rem;
   }
+}
+/* Styles for the main admin page  
+********************************************************************* */
+.main-container {
+  display: flex;
+  margin-left: 100px;
+}
+
+.btn-admin-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 20px;
+  width: 200px;
+  height: 60px;
+  padding: auto;
+}
+.btn-admin-card .fi {
+  margin-top: 17px;
+}
+.btn-admin-card i {
+  margin: 5px;
+}
+.btn-admin-card .title {
+  font-size: 16px;
+  padding-right: 30px;
+  color: #131313;
+}
+
+.container-admin {
+  display: flex;
+}
+.container-admin .btn-admin-card {
+  margin-right: 30px;
+}
+.container-admin .btn-admin-card:last-child {
+  margin-right: 0px;
+}
+.container-admin .btn-admin-card:hover {
+  background-color: #090909;
+  color: #fff;
+  transition: 0.5s;
+}
+.container-admin .btn-admin-card:hover span {
+  color: #fff;
 }
 
 /*# sourceMappingURL=base.css.map */

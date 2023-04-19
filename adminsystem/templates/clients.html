@@ -6,6 +6,7 @@
     {% block css %}
         <link rel="stylesheet" href="{% static '/css/sidebar.css' %}">
         <link rel="stylesheet" href="{% static '/css/base.css' %}">
+        <link rel="stylesheet" href="{% static '/css/client.css' %}">
     {% endblock %}
 
     {%block metalinks %}
@@ -14,7 +15,30 @@
 {% block titleAdmin %}Listado de Clientes{% endblock %}
 
 {% block content %}
-<main>
-    
-</main>
+<table id="expendable-data-table" class="table display nowrap" style="width:100%">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Telefono</th>
+      <th>Servicio</th>
+      <th>Tamaño</th>
+      <th>Nicho</th>
+      <th>Tipo Negocio</th>
+      <th>E-mail</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for customer in client_data %}
+    <tr>
+      <td>{{ customer.name }}</td>
+      <td>{{ customer.phoneNumber }}</td>
+      <td>{{ customer.service }}</td>
+      <td>{{ customer.businessSize }}</td>
+      <td>{{ customer.niche }}</td>
+      <td>{{ customer.businessType }}</td>
+      <td>{{ customer.email }}</td>
+    </tr> 
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock %}

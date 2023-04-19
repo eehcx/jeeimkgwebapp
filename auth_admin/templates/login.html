@@ -27,8 +27,12 @@
         <p>{{ error_message }}</p>
       {% endif %}
       <div class="user-box">
-        <input type="text" name="uid" required>
-        <label for="uid">UID:</label>
+        <input type="email" name="email" required>
+        <label for="email">Email:</label>
+      </div>
+      <div class="user-box">
+        <input type="password" name="password" required>
+        <label for="password">Password:</label>
       </div>
       <input type="hidden" name="custom_token" id="custom_token" value="{{ custom_token }}">
       <button type="submit">LOGIN</button>
