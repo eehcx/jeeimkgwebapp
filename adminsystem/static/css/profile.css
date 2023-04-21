@@ -5,5 +5,13 @@
 ********************************************************************* */
 /* Base Styles
 ********************************************************************* */
+.container-profile {
+  margin-left: 80px;
+  width: 700px;
+  height: 500px;
+  background-color: #fff;
+  border-radius: 25px;
+  padding: 30px;
+}
 
 /*# sourceMappingURL=profile.css.map */

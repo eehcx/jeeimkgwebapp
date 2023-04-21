@@ -158,4 +158,56 @@ header h1 {
   color: #fff;
 }
 
+.table-content {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  margin-top: 40px;
+  margin-bottom: 2px;
+  border: 1px solid #dee2e6;
+  border-radius: 0.1rem;
+}
+.table-content th,
+.table-content td {
+  padding: 3.4px;
+  align-items: center;
+  border-top: 1px solid #dee2e6;
+}
+.table-content th i:hover,
+.table-content td i:hover {
+  color: #d73636;
+  cursor: pointer;
+}
+.table-content th {
+  text-align: left;
+  font-size: 14px;
+}
+.table-content tbody tr {
+  font-size: 13px;
+}
+.table-content tbody tr:hover {
+  background-color: #f8f9fa;
+}
+@media only screen and (min-width: 768px) {
+  .table-content {
+    padding-left: 60px;
+  }
+  .table-content tbody {
+    margin-left: -60px;
+  }
+}
+
+.btn-view-more {
+  display: flex;
+  float: right;
+  margin-top: 20px;
+  margin-right: 40px;
+}
+.btn-view-more a {
+  color: #000000;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
 /*# sourceMappingURL=base.css.map */

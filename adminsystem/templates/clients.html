@@ -14,10 +14,20 @@
 
 {% block titleAdmin %}Listado de Clientes{% endblock %}
 
+    {% block search %}
+        {% include "layouts/search.html" %}
+    {% endblock %}
+
+    {% block user %}
+      {% include "layouts/user.html" %}
+    {% endblock %}
+
+
 {% block content %}
 <table id="expendable-data-table" class="table display nowrap" style="width:100%">
   <thead>
     <tr>
+      <th style="display: none;">ID</th>
       <th>Nombre</th>
       <th>Telefono</th>
       <th>Servicio</th>
@@ -25,11 +35,13 @@
       <th>Nicho</th>
       <th>Tipo Negocio</th>
       <th>E-mail</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     {% for customer in client_data %}
     <tr>
+      <td style="display: none;">{{ customer.id }}</td>
       <td>{{ customer.name }}</td>
       <td>{{ customer.phoneNumber }}</td>
       <td>{{ customer.service }}</td>
@@ -37,10 +49,19 @@
       <td>{{ customer.niche }}</td>
       <td>{{ customer.businessType }}</td>
       <td>{{ customer.email }}</td>
+      <td>
+        <a href="{% url 'edit_customer' customer.id %}">
+            <i class="fi fi-rr-edit"></i>
+        </a>
+    </td>
     </tr> 
     {% endfor %}
   </tbody>
 </table>
-<a href="{% url 'clients' start|add:12 end|add:12 %}" class="button">Cargar más</a>
-<a href="{% url 'clients' 0 12 %}" class="button">Regresar</a>
+
+<div class="btn-view-more">
+  <a href="{% url 'clients' 0 10 %}" class="button"><i class="fi fi-rr-arrow-left"></i></a>
+  <a href="{% url 'clients' start|add:10 end|add:10 %}" class="button"><i class="fi fi-rr-arrow-right"></i></a>
+</div>
+
 {% endblock %}

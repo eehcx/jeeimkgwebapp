@@ -8,25 +8,103 @@
 {% endblock %}
 
 {% block titleAdmin %}Página Principal {% endblock %}
+
+    {% block search %}
+        {% include "layouts/search.html" %}
+    {% endblock %}
+
+    {% block user %}
+        {% include "layouts/user.html" %}
+    {% endblock %}
+
+
 {% block content %}
 <div class="main-container">
     <div class="container-admin">
-        <button class="btn-admin-card">
+        <button id="btn-clients" class="btn-admin-card">
             <i class="fi fi-sr-users-alt"></i>
             <span class="title"> <strong>Clientes</strong> </span>
         </button>
-        <button class="btn-admin-card">
+        <button id="btn-pre-customers" class="btn-admin-card">
             <i class="fi fi-sr-clock"></i>
             <span class="title"> <strong>En espera</strong> </span>
         </button>
-        <button class="btn-admin-card">
+        <button id="btn-services" class="btn-admin-card">
             <i class="fi fi-sr-tags"></i>
             <span class="title"> <strong>Servicios</strong> </span>
         </button>
-        <button class="btn-admin-card">
+        <button id="btn-opinions" class="btn-admin-card">
             <i class="fi fi-sr-comment"></i>
             <span class="title"> <strong>Opiniones</strong> </span>
         </button>
     </div>
 </div>
+
+<table class="table-content" id="clients-table" style=" width: 100%">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Telefono</th>
+            <th>Servicio</th>
+            <th>Tamaño</th>
+            <th>Nicho</th>
+            <th>Tipo Negocio</th>
+            <th>E-mail</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for customer in customers_data %}
+        <tr>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.phoneNumber }}</td>
+            <td>{{ customer.service }}</td>
+            <td>{{ customer.businessSize }}</td>
+            <td>{{ customer.niche }}</td>
+            <td>{{ customer.businessType }}</td>
+            <td>{{ customer.email }}</td>
+            <td><i class="fi fi-rr-edit"></i></td>
+        </tr> 
+        {% endfor %}
+    </tbody>
+</table>
+<table class="table-content" id="pre-customers-table" style="display: none; width: 100%">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Telefono</th>
+            <th>Tipo Negocio</th>
+            <th>Nicho</th>
+            <th>Presupuesto</th>
+            <th>Tamaño</th>
+            <th>Antiguedad</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for customer in pre_customers_data %}
+        <tr>
+            <td>{{ customer.nombre }}</td>
+            <td>{{ customer.numero }}</td>
+            <td>{{ customer.tipoNegocio }}</td>
+            <td>{{ customer.nicho }}</td>
+            <td>{{ customer.presupuesto }}</td>
+            <td>{{ customer.tamano }}</td>
+            <td>{{ customer.tiempo }}</td>
+            <td><i class="fi fi-rr-edit"></i></td>
+        </tr> 
+        {% endfor %}
+    </tbody>
+</table>
+
+<script>
+    $("#btn-clients").click(function() {
+        $("#clients-table").show();
+        $("#pre-customers-table").hide();
+    });
+    $("#btn-pre-customers").click(function() {
+        $("#clients-table").hide();
+        $("#pre-customers-table").show();
+    });
+</script>
 {% endblock %}

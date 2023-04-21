@@ -300,7 +300,10 @@ div.modal{
     border-radius: 0.1rem;
     th,
     td {
-      padding: 1rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      padding-left: 1rem;
+      padding-right: 2.4rem;
       vertical-align: top;
       border-top: 1px solid #dee2e6;
     }

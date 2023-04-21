@@ -5,8 +5,12 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required, user_passes_test
 from googleapiclient.discovery import build
 from .models import Cliente
+from .forms import EditCustomerForm
 import firebase_admin, requests, pyrebase
-from firebase_admin import credentials, firestore
+from firebase_admin import credentials, firestore, db
+from django.http import HttpResponse
+# importa messages
+from django.contrib import messages
 
 config = {
     "apiKey": "AIzaSyBXEiXDLhTkwYUCVD4oANFZeMtzqEoPLls",
@@ -45,7 +49,23 @@ def get_data_from_api():
 """
 
 def sysadmin(request):
-    return render(request, 'sysadmin.html', {})
+
+    customers = db.child("Customers").get().val()
+    customers = list(customers.values())
+
+    pre_customers = db.child("Pre-Customers").get().val()
+    pre_customers = list(pre_customers.values())
+
+    # Invierte el orden de los datos en la lista
+    customers_data = list(reversed(customers))[:9]
+    pre_customers_data = list(reversed(pre_customers))[:9]
+
+    context = {
+        'customers_data': customers_data,
+        'pre_customers_data': pre_customers_data,
+    }
+
+    return render(request, 'sysadmin.html', context)
 
 def config(request):
     return render(request, 'configuration.html', {})
@@ -86,43 +106,95 @@ def contactClient(request):
 
     return render(request, 'inbox.html', context)
 
-def clients(request, start=0, end=12):
-    # Obtener todos los datos de la colección "Customers" en orden inverso
-    customers = db.child("Customers").get().val()
-    customers = list(customers.values())[::-1]
+def clients(request, start=0, end=10):
+    # Obtener todos los datos de la colección "Customers"
+    customers = db.child("Customers").get()
 
     # Crear una lista para almacenar los datos de los clientes
     client_data = []
 
     # Iterar sobre los datos obtenidos y agregarlos a la lista
-    for i in range(start, end):
-        if i >= len(customers):
-            break
-        client_data.append(customers[i])
+    for customer in customers.each():
+        data = customer.val()
+        data['id'] = customer.key()
+        client_data.append(data)
+
+    # Invertir la lista de datos de los clientes
+    client_data.reverse()
 
     # Pasar los datos de los clientes al contexto para que se puedan renderizar en el template
     context = {
-        'client_data': client_data,
+        'client_data': client_data[start:end],
         'start': start,
         'end': end
     }
 
-    # Agregar esta línea para imprimir los datos en la consola
-    print(client_data)
-
     return render(request, 'clients.html', context)
 
-"""
-def clients(request):
-    data = get_data_from_api()
+def edit_customer(request, customer_id):
     
-    if data:
-        # Procesar los datos y hacer lo que necesites con ellos
-        return render(request, 'clients.html', {'data': data})
-    else:
-        # Si no se pudieron obtener los datos, mostrar un error
-        return render(request, 'error_template.html')
-"""
+    # Verificar si la solicitud es POST
+    if request.method == 'POST':
+        # Obtener los datos del formulario
+        data = {
+            'name': request.POST['name'],
+            'email': request.POST['email'],
+            'phoneNumber': request.POST['phoneNumber'],
+            'sector': request.POST['sector'],
+            'service': request.POST['service'],
+            'socialMedia': request.POST['social'],
+            'income': request.POST['income'],
+            'address': request.POST['address'],
+            'needs': request.POST['needs'],
+            'businessType': request.POST['businessType']
+        }
+
+        # Actualizar los datos del cliente en la base de datos de Firebase
+        db.child('Customers').child(customer_id).update(data)
+
+        # Redirigir al usuario a la página de detalles del cliente
+        return redirect('clients', {})
+
+    # Obtener los datos del cliente a partir de su ID
+    customer = db.child("Customers").child(customer_id).get().val()
+
+    # Imprimir los datos del cliente en la consola
+    #print(customer)
+
+    form = EditCustomerForm(customer)
+
+    # Pasar los datos del cliente al contexto
+    context = {
+        'customer': customer,
+        'customer_id': customer_id,
+    }
+
+    # Renderizar el template con el contexto
+    return render(request, 'edit_customer.html', context)
+
+
+def update_customer(request, customer_id):
+    # Obtener los datos del cliente a partir de su ID
+    customer = db.child("Customers").child(customer_id).get().val()
+
+    # Imprimir los datos del cliente en la consola
+    #print(customer)
+
+    form = EditCustomerForm(request.POST, instance=customer)
+
+    # Si el formulario es válido, actualizar los datos del cliente
+    if form.is_valid():
+        form.save()
+        messages.success(request, 'Cliente actualizado correctamente')
+        return redirect('clients')
+
+    # Si el formulario no es válido, renderizar el template con los datos del cliente
+    context = {
+        'customer': customer,
+        'customer_id': customer_id,
+    }
+
+    return render(request, 'edit_customer.html', context)
 
 
 def employers(request):

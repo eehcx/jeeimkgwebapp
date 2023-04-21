@@ -9,19 +9,29 @@ body {
   border-collapse: separate;
   border-spacing: 0;
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 2px;
   border: 1px solid #dee2e6;
   border-radius: 0.1rem;
 }
 #expendable-data-table th,
 #expendable-data-table td {
-  padding: 0.4rem;
-  vertical-align: top;
+  padding: 3.4px;
+  align-items: center;
   border-top: 1px solid #dee2e6;
+}
+#expendable-data-table th i:hover,
+#expendable-data-table td i:hover {
+  color: #d73636;
+  cursor: pointer;
+}
+#expendable-data-table th a,
+#expendable-data-table td a {
+  text-decoration: none;
+  color: #000;
 }
 #expendable-data-table th {
   text-align: left;
-  font-size: 15px;
+  font-size: 14px;
 }
 #expendable-data-table tbody tr {
   font-size: 13px;
@@ -36,30 +46,6 @@ body {
   #expendable-data-table tbody {
     margin-left: -60px;
   }
-}
-
-.button {
-  display: inline-block;
-  padding: 10px 20px;
-  margin-left: 60px;
-  font-size: 16px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
-}
-.button .button:hover {
-  background-color: #3e8e41;
-}
-.button .button:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
 }
 
 /*# sourceMappingURL=client.css.map */

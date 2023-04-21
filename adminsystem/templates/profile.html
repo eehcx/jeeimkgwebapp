@@ -6,11 +6,16 @@
     {% block css %}
         <link rel="stylesheet" href="{% static '/css/sidebar.css' %}">
         <link rel="stylesheet" href="{% static '/css/base.css' %}">
+        <link rel="stylesheet" href="{% static '/css/profile.css' %}">
     {% endblock %}
 
 {% block titleAdmin %}Perfil de clientes{% endblock %}
 
 {% block content %}
-    <main>
-    </main>
+    <div>
+        <div class="container-profile">
+            <div class="user-circle"></div>
+            <span>eehcx.contacto@gmail.com</span>
+        </div>
+    </div>
 {% endblock %}

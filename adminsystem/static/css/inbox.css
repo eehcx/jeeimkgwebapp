@@ -250,7 +250,10 @@ div.modal {
 }
 #expendable-data-table th,
 #expendable-data-table td {
-  padding: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 2.4rem;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
 }
