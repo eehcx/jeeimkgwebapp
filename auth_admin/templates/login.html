@@ -12,20 +12,10 @@
     {% endblock %}
 
 {% block content %}
-  {% if messages %}
-    <ul>
-      {% for message in messages %}
-        <li>{{ message }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
   <form method="POST" id="login-form" action="{% url 'login' %}">
     {% csrf_token %}
     <div class="login-box">
       <h2>jeeimkg sysadmin</h2>
-      {% if error_message %}
-        <p>{{ error_message }}</p>
-      {% endif %}
       <div class="user-box">
         <input type="email" name="email" required>
         <label for="email">Email:</label>

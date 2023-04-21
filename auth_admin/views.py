@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 import os, firebase_admin, json, requests
-from firebase_admin import credentials, auth, firestore, exceptions
+from firebase_admin import credentials, auth as firebase_admin_auth, firestore, exceptions
 from firebase_admin.exceptions import FirebaseError
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from .forms import FirebaseSignupForm
@@ -9,10 +9,9 @@ from jeeimkg.db import get_firestore_client, credentials as db_credentials
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse, HttpResponseRedirect
 from django.views.decorators.http import require_http_methods
+import pyrebase
 
-#os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./jeeimkgServiceKey.json"
-#db = firestore.Client()
-#db = get_firestore_client()
+
 
 """| Vista que me crea usuarios apartir de mi Formulario |"""
 @csrf_protect
@@ -29,23 +28,24 @@ def signup(request):
 @csrf_protect
 def login(request):
     if request.method == 'POST':
-        # Obtener los datos del formulario
         email = request.POST['email']
         password = request.POST['password']
+        # Send the email and password to Firebase Authentication
+        config = {
+            "apiKey": "AIzaSyBXEiXDLhTkwYUCVD4oANFZeMtzqEoPLls",
+            "authDomain": "jeeimkg-5705b.firebaseapp.com",
+            "databaseURL": "https://jeeimkg-5705b-default-rtdb.firebaseio.com/",
+            "storageBucket": "jeeimkg-5705b.appspot.com"
+        }
 
-        # Hacer la solicitud a la API de login
-        response = requests.post('https://restapi-jeeimkg.onrender.com/login', json={'email': email, 'password': password})
-
-        # Verificar la respuesta de la API
-        if response.status_code == 200:
-            message = 'Inicio de sesión exitoso'
-        elif response.status_code == 401:
-            message = 'Contraseña incorrecta'
-        else:
-            message = 'Usuario no encontrado'
-
-        # Renderizar la plantilla con el mensaje de respuesta
-        return render(request, 'login.html', {'message': message})
-
-    # Si la solicitud no es POST, renderizar el formulario de login
+        firebase = pyrebase.initialize_app(config)
+        auth = firebase.auth()
+        user = auth.sign_in_with_email_and_password(email, password)
+        id_token = user['idToken']
+        decoded_token = firebase_admin_auth.verify_id_token(id_token)
+        uid = decoded_token['uid']
+        # Log in the user using the uid
+        # ...
+        # Redirect the user to the adminsystem view
+        return redirect('adminsystem')
     return render(request, 'login.html')

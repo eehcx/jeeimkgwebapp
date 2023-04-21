@@ -57,8 +57,8 @@ def sysadmin(request):
     pre_customers = list(pre_customers.values())
 
     # Invierte el orden de los datos en la lista
-    customers_data = list(reversed(customers))[:9]
-    pre_customers_data = list(reversed(pre_customers))[:9]
+    customers_data = list(reversed(customers))[:15]
+    pre_customers_data = list(reversed(pre_customers))[:15]
 
     context = {
         'customers_data': customers_data,
