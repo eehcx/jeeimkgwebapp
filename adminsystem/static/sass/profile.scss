@@ -20,12 +20,87 @@ $gray-900: #212529;
 /* Base Styles
 ********************************************************************* */
 
+body{
+    font-family: 'Open Sans', sans-serif;
+}
 
-.container-profile{
+.container-profile {
+    display: flex;
     margin-left: 80px;
     width: 700px;
-    height: 500px;
+    height: 400px;
     background-color: #fff;
     border-radius: 25px;
     padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.014);
+
+    .container-txt{
+        display: flex;
+        position: column;
+        height: 60px;
+    
+        .user-circle {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            background-color: black;
+            margin-right: 20px;
+            margin-top: 5px;
+        }
+    
+        .email-profile {
+            font-size: 20px;
+            font-weight: bold;
+            color: $gray-900;
+        }
+    
+        .rol-profile {
+            font-size: 16px;
+            color: $gray-900;
+        }
+    }
+
+    .form-container {
+        display: flex;
+        margin-top: 70px;
+        position: fixed;
+        background-color: #ffffff;
+        //justify-content: flex-start; 
+        //float: left;
+
+        form {
+            display: block;
+            height: 100%;
+            width: 100%;
+            margin-top: 20px;
+
+            label {
+                font-weight: bold;
+                color: $gray-900;
+                margin-bottom: 10px;
+            }
+
+            input {
+                font-size: 17px;
+                margin-left: 10px;
+                margin-bottom: 20px;
+                border: #212529 1px solid;
+            }
+
+            [type="submit"] {
+                background: #191919;
+                border: 0;
+                border-radius: 3px;
+                padding: 8px;
+                cursor: pointer;
+                color: white;
+                transition: all 1s;
+                font-weight: 700;
+        
+                &:hover {
+                    background: #325dc8;
+                }
+            }
+        }
+    }
 }

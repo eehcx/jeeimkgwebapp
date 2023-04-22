@@ -12,8 +12,31 @@
 {% block titleAdmin %}Perfil del cliente{% endblock %}
 
 {% block content %}
-    <div>
-        <div class="container-profile">            
+    <div class="container-profile">
+        <div class="container-txt">
+            <div class="user-circle"></div>
+            <div>
+                <p class="email-profile">{{ email }}</p>
+                <p class="rol-profile">Administrador</p>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <form method="post" action="">
+                <h2>Cambiar Contraseña</h2>
+                {% csrf_token %}
+                <br>
+                <label for="password">Contraseña Actual:</label>
+                <input type="password" name="password">
+                <br>
+                <label for="new-password">Nueva Contraseña:</label>
+                <input type="password" name="new-password">
+                <br>
+                <label for="confirm-password">Confirmar Contraseña:</label>
+                <input type="password" name="confirm-password">
+                <br>
+                <input type="submit" value="Guardar">
+            </form>
         </div>
     </div>
 {% endblock %}

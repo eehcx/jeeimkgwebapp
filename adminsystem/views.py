@@ -46,6 +46,7 @@ def config(request):
     return render(request, 'configuration.html', {})
 
 @firebase_login_required
+@csrf_protect
 def profile(request):
     email = request.session.get('email')
 
