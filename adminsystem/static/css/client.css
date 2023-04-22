@@ -21,7 +21,7 @@ body {
 }
 #expendable-data-table th i:hover,
 #expendable-data-table td i:hover {
-  color: #d73636;
+  color: #325dc8;
   cursor: pointer;
 }
 #expendable-data-table th a,

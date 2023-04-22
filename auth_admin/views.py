@@ -1,4 +1,3 @@
-from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 import os, firebase_admin, json, requests, pyrebase
 from firebase_admin import credentials, auth as firebase_admin_auth, firestore, exceptions
@@ -9,7 +8,6 @@ from jeeimkg.db import get_firestore_client, credentials as db_credentials
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse, HttpResponseRedirect
 from django.views.decorators.http import require_http_methods
-from .decorators import require_authentication
 
 config = {
             "apiKey": "AIzaSyBXEiXDLhTkwYUCVD4oANFZeMtzqEoPLls",
@@ -36,17 +34,16 @@ def signup(request):
 @csrf_protect
 def login(request):
     if request.method == 'POST':
-        email = request.POST['email']
-        password = request.POST['password']
-        # Send the email and password to Firebase Authentication
-        
-        user = auth.sign_in_with_email_and_password(email, password)
-        #print(user)
-        id_token = user['idToken']
-        decoded_token = firebase_admin_auth.verify_id_token(id_token)
-        uid = decoded_token['uid']
-        # Log in the user using the uid
-        # ...
-        # Redirect the user to the adminsystem view
-        return redirect('adminsystem')
+        try:
+            email = request.POST['email']
+            password = request.POST['password']
+            user = auth.sign_in_with_email_and_password(email, password)
+            id_token = user['idToken']
+            decoded_token = firebase_admin_auth.verify_id_token(id_token)
+            uid = decoded_token['uid']
+            # Redirecciona a la vista de adminsystem
+            return redirect('adminsystem')
+        except:
+            messages.error(request, 'Usuario o contraseña incorrectos')
+            return redirect('login')
     return render(request, 'login.html')

@@ -1,13 +1,13 @@
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
-from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.decorators import user_passes_test
 from .forms import EditCustomerForm
 import os, firebase_admin, requests, pyrebase
 from firebase_admin import credentials, firestore, db
 from django.http import HttpResponse
 from django.contrib import messages
-from auth_admin.decorators import require_authentication
+from auth_admin.decorators import firebase_login_required
 
 config = {
     "apiKey": "AIzaSyBXEiXDLhTkwYUCVD4oANFZeMtzqEoPLls",
@@ -19,7 +19,7 @@ config = {
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 
-#@require_authentication
+#@firebase_login_required
 def sysadmin(request):
 
     customers = db.child("Customers").get().val()

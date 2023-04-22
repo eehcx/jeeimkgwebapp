@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'adminsystem.apps.AdminsystemConfig',
+    'adminsystem',
     'auth_admin',
     'landing_pages',
     'home'
@@ -37,9 +37,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #Middleware de Firebase para autenticación y enrutamiento
-    #'adminsystem.middleware.middleware.FirebaseAuthenticationMiddleware'
+    'django.middleware.clickjacking.XFrameOptionsMiddleware'
 ]
 
 ROOT_URLCONF = 'jeeimkg.urls'
@@ -64,21 +62,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'jeeimkg.wsgi.application'
 
 # bases de datos
-
-"""
-import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import firestore
-
-# Configurar la clave privada descargada
-cred = credentials.Certificate("jeeimkgServiceKey.json")
-firebase_admin.initialize_app(cred)
-
-# Crear una conexión a Firestore
-db = firestore.client()
-"""
-
-
 
 
 # Password validation
