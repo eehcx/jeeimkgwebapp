@@ -1,12 +1,11 @@
-from functools import wraps
 from django.shortcuts import redirect
 
-def firebase_login_required(f):
-    @wraps(f)
-    def decorated_function(request, *args, **kwargs):
-        if 'uid' not in request.session:
+def firebase_login_required(function):
+    def wrapper(request, *args, **kwargs):
+        if 'email' in request.session:
+            return function(request, *args, **kwargs)
+        else:
             return redirect('login')
-        return f(request, *args, **kwargs)
-    return decorated_function
+    return wrapper
 
 

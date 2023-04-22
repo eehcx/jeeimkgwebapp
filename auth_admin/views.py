@@ -41,6 +41,9 @@ def login(request):
             id_token = user['idToken']
             decoded_token = firebase_admin_auth.verify_id_token(id_token)
             uid = decoded_token['uid']
+            #
+            request.session['email'] = email
+
             # Redirecciona a la vista de adminsystem
             return redirect('adminsystem')
         except:

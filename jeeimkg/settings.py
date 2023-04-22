@@ -121,3 +121,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/login/'
 #LOGIN_REDIRECT_URL = 'sysadmin'
+
+# Configura tu caché
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+    }
+}
+
+# Establece el backend de sesión en caché
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'

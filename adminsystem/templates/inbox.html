@@ -9,8 +9,9 @@
         {% include "layouts/search.html" %}
     {% endblock %}
 
+    {% block userimg %}<div class="user-circle"></div>{% endblock %}
     {% block user %}
-        {% include "layouts/user.html" %}
+        {{ email }}
     {% endblock %}
 
 {%block js %}

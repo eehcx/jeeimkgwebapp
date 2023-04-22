@@ -1,10 +1,7 @@
 from django.apps import AppConfig
-from .middleware import FirebaseAuthenticationMiddleware
 
 class AdminsystemConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
     name = 'adminsystem'
 
-    def ready(self):
-        # Agrega el middleware a la configuración de la aplicación
-        self.middleware.append(FirebaseAuthenticationMiddleware)
 

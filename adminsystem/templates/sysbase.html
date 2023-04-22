@@ -48,7 +48,10 @@
 
             {% block search %}{% endblock %}
 
-            {% block user %}{% endblock %}
+            <div class="user-wrapper">
+                {% block userimg %}{% endblock %}
+                <p class="user-name">{% block user %}{% endblock %}</p>
+            </div>
 
         </div>
     </header>

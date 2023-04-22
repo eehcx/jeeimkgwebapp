@@ -19,9 +19,10 @@ config = {
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 
-#@firebase_login_required
+@firebase_login_required
 def sysadmin(request):
-
+    email = request.session.get('email')
+    # Obtener todos los datos de la colección "Customers" en orden inverso
     customers = db.child("Customers").get().val()
     customers = list(customers.values())
 
@@ -35,17 +36,28 @@ def sysadmin(request):
     context = {
         'customers_data': customers_data,
         'pre_customers_data': pre_customers_data,
+        'email': email
     }
 
     return render(request, 'sysadmin.html', context)
 
+@firebase_login_required
 def config(request):
     return render(request, 'configuration.html', {})
 
+@firebase_login_required
 def profile(request):
-    return render(request, 'profile.html')
+    email = request.session.get('email')
 
+    context = {
+        'email': email
+    }
+
+    return render(request, 'profile.html', context)
+
+@firebase_login_required
 def contactClient(request):
+    email = request.session.get('email')
     # Obtener todos los datos de la colección "Customers" en orden inverso
     customers = db.child("Customers").get().val()
     customers = list(customers.values())[::-1]
@@ -73,12 +85,15 @@ def contactClient(request):
     context = {
         'last_customers': last_customers,
         #'contacts': contacts,
-        'pre_customers': pre_customers
+        'pre_customers': pre_customers,
+        'email': email
     }
 
     return render(request, 'inbox.html', context)
 
+@firebase_login_required
 def clients(request, start=0, end=10):
+    email = request.session.get('email')
     # Obtener todos los datos de la colección "Customers"
     customers = db.child("Customers").get()
 
@@ -98,11 +113,13 @@ def clients(request, start=0, end=10):
     context = {
         'client_data': client_data[start:end],
         'start': start,
-        'end': end
+        'end': end,
+        'email': email
     }
 
     return render(request, 'clients.html', context)
 
+@firebase_login_required
 def edit_customer(request, customer_id):
     
     # Verificar si la solicitud es POST
@@ -144,7 +161,7 @@ def edit_customer(request, customer_id):
     # Renderizar el template con el contexto
     return render(request, 'edit_customer.html', context)
 
-
+@firebase_login_required
 def update_customer(request, customer_id):
     # Obtener los datos del cliente a partir de su ID
     customer = db.child("Customers").child(customer_id).get().val()
@@ -168,10 +185,11 @@ def update_customer(request, customer_id):
 
     return render(request, 'edit_customer.html', context)
 
-
+@firebase_login_required
 def employers(request):
     return render(request, 'employers.html', {})
 
+@firebase_login_required
 def search(request):
     query = request.GET.get('q')
     results = []
