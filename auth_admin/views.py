@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
-import os, firebase_admin, json, requests
+import os, firebase_admin, json, requests, pyrebase
 from firebase_admin import credentials, auth as firebase_admin_auth, firestore, exceptions
 from firebase_admin.exceptions import FirebaseError
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
@@ -9,9 +9,17 @@ from jeeimkg.db import get_firestore_client, credentials as db_credentials
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse, HttpResponseRedirect
 from django.views.decorators.http import require_http_methods
-import pyrebase
+from .decorators import require_authentication
 
+config = {
+            "apiKey": "AIzaSyBXEiXDLhTkwYUCVD4oANFZeMtzqEoPLls",
+            "authDomain": "jeeimkg-5705b.firebaseapp.com",
+            "databaseURL": "https://jeeimkg-5705b-default-rtdb.firebaseio.com/",
+            "storageBucket": "jeeimkg-5705b.appspot.com"
+        }
 
+firebase = pyrebase.initialize_app(config)
+auth = firebase.auth()
 
 """| Vista que me crea usuarios apartir de mi Formulario |"""
 @csrf_protect
@@ -31,16 +39,9 @@ def login(request):
         email = request.POST['email']
         password = request.POST['password']
         # Send the email and password to Firebase Authentication
-        config = {
-            "apiKey": "AIzaSyBXEiXDLhTkwYUCVD4oANFZeMtzqEoPLls",
-            "authDomain": "jeeimkg-5705b.firebaseapp.com",
-            "databaseURL": "https://jeeimkg-5705b-default-rtdb.firebaseio.com/",
-            "storageBucket": "jeeimkg-5705b.appspot.com"
-        }
-
-        firebase = pyrebase.initialize_app(config)
-        auth = firebase.auth()
+        
         user = auth.sign_in_with_email_and_password(email, password)
+        #print(user)
         id_token = user['idToken']
         decoded_token = firebase_admin_auth.verify_id_token(id_token)
         uid = decoded_token['uid']

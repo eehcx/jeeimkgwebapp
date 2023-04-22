@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'adminsystem',
+    'adminsystem.apps.AdminsystemConfig',
     'auth_admin',
     'landing_pages',
     'home'
@@ -38,6 +38,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #Middleware de Firebase para autenticación y enrutamiento
+    #'adminsystem.middleware.middleware.FirebaseAuthenticationMiddleware'
 ]
 
 ROOT_URLCONF = 'jeeimkg.urls'

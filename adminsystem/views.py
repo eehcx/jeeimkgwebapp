@@ -1,16 +1,13 @@
-import os
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required, user_passes_test
-from googleapiclient.discovery import build
-from .models import Cliente
 from .forms import EditCustomerForm
-import firebase_admin, requests, pyrebase
+import os, firebase_admin, requests, pyrebase
 from firebase_admin import credentials, firestore, db
 from django.http import HttpResponse
-# importa messages
 from django.contrib import messages
+from auth_admin.decorators import require_authentication
 
 config = {
     "apiKey": "AIzaSyBXEiXDLhTkwYUCVD4oANFZeMtzqEoPLls",
@@ -22,32 +19,7 @@ config = {
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 
-"""
-def get_data_from_api():
-    url = 'https://restapi-jeeimkg.onrender.com/customers'
-    #headers = {'Authorization': 'Bearer <token_de_autenticación>'}
-    
-    clientes = Cliente.objects.all()  # Obtener todos los clientes
-    
-    params = {}
-    for cliente in clientes:
-        params[cliente.name] = cliente.name
-        params[cliente.phoneNumber] = cliente.phoneNumber
-        params[cliente.service] = cliente.service
-        params[cliente.businessSize] = cliente.businessSize
-        params[cliente.niche] = cliente.niche
-        params[cliente.businessType] = cliente.businessType
-        params[cliente.email] = cliente.email
-    
-    response = requests.get(url, params=params) #, headers=headers)
-
-    if response.status_code == 200:
-        data = response.json()
-        return data
-    else:
-        return None
-"""
-
+#@require_authentication
 def sysadmin(request):
 
     customers = db.child("Customers").get().val()

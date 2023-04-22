@@ -15,7 +15,7 @@ body {
 }
 #expendable-data-table th,
 #expendable-data-table td {
-  padding: 3.4px;
+  padding: 1.8px;
   align-items: center;
   border-top: 1px solid #dee2e6;
 }
@@ -26,6 +26,7 @@ body {
 }
 #expendable-data-table th a,
 #expendable-data-table td a {
+  margin: 0%;
   text-decoration: none;
   color: #000;
 }
@@ -46,6 +47,39 @@ body {
   #expendable-data-table tbody {
     margin-left: -60px;
   }
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+}
+a i {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.btn-add {
+  background-color: #090909;
+  color: #ffffff;
+  padding: 0px 4px;
+  margin-top: 10px;
+  text-align: center;
+  margin-left: 90px;
+  border-radius: 5px;
+  border: none;
+  transition: all 0.5s ease-in-out;
+}
+.btn-add:hover {
+  background-color: #325dc8;
+  color: #ffffff;
+}
+
+.button {
+  transition: all 0.5s ease-in-out;
+}
+.button:hover {
+  color: #325dc8;
 }
 
 /*# sourceMappingURL=client.css.map */
