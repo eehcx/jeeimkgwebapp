@@ -50,6 +50,14 @@
                 </span>
             </a>
         </li>
+        <li class="has-subnav">
+            <a href="{% url 'signup' %}">
+                <i class="fi fi-rr-add"></i>
+                <span class="nav-text">
+                    Add new user
+                </span>
+            </a>
+        </li>
         <li>
             <a href="{% url 'configuration' %}">
                 <i class="fi fi-rr-settings"></i>
@@ -62,7 +70,7 @@
 
     <ul class="logout">
         <li>
-            <a href="{% url 'login' %}">
+            <a href="{% url 'logout' %}">
                 <i class="fi fi-rr-exit"></i>
                 <span class="nav-text">
                     Logout

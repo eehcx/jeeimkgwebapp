@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@300;400;500;700&display=swap");
+.container-config {
+  display: inline-block;
+  margin-left: 80px;
+  width: 600px;
+  height: 100px;
+  border-radius: 25px;
+  padding: 30px;
+  background-color: #ffffff;
+}
+.container-config h2 {
+  font-family: "Alegreya Sans SC", sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  color: #212529;
+  margin-bottom: 30px;
+}
+
+/*# sourceMappingURL=config.css.map */

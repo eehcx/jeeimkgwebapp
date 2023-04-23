@@ -1,10 +1,20 @@
 {% extends "sysbase.html" %}
+{% load static %}
 
     {% block title %}Sistema de administración{% endblock %}
+
+    {% block css %}
+        <link rel="stylesheet" href="{% static '/css/base.css' %}">
+        <link rel="stylesheet" href="{% static '/css/sidebar.css' %}">
+        <link rel="stylesheet" href="{% static '/css/config.css' %}">
+    {% endblock %}
 
 
 {% block titleAdmin %}Configuración de sistema{% endblock %}
 
 {% block content %}
-
+    <div class="container-config">
+        <h2>jeeimkg sysadmin v0.1.02</h2>
+        <br>
+    </div> 
 {% endblock %}

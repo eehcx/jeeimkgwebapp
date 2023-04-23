@@ -50,3 +50,11 @@ def login(request):
             messages.error(request, 'Usuario o contraseña incorrectos')
             return redirect('login')
     return render(request, 'login.html')
+
+
+def logout(request):
+    try:
+        del request.session['email']
+    except:
+        pass
+    return redirect('login')
