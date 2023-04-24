@@ -7,6 +7,7 @@ import os, firebase_admin, requests, pyrebase
 from firebase_admin import credentials, firestore, db
 from django.http import HttpResponse
 from django.contrib import messages
+from django.urls import reverse
 from auth_admin.decorators import firebase_login_required
 
 config = {
@@ -122,41 +123,16 @@ def clients(request, start=0, end=10):
 
 @firebase_login_required
 def edit_customer(request, customer_id):
-    
-    # Verificar si la solicitud es POST
-    if request.method == 'POST':
-        # Obtener los datos del formulario
-        data = {
-            'name': request.POST['name'],
-            'email': request.POST['email'],
-            'phoneNumber': request.POST['phoneNumber'],
-            'sector': request.POST['sector'],
-            'service': request.POST['service'],
-            'socialMedia': request.POST['social'],
-            'income': request.POST['income'],
-            'address': request.POST['address'],
-            'needs': request.POST['needs'],
-            'businessType': request.POST['businessType']
-        }
-
-        # Actualizar los datos del cliente en la base de datos de Firebase
-        db.child('Customers').child(customer_id).update(data)
-
-        # Redirigir al usuario a la página de detalles del cliente
-        return redirect('clients', {})
-
     # Obtener los datos del cliente a partir de su ID
     customer = db.child("Customers").child(customer_id).get().val()
 
     # Imprimir los datos del cliente en la consola
     #print(customer)
 
-    form = EditCustomerForm(customer)
-
     # Pasar los datos del cliente al contexto
     context = {
         'customer': customer,
-        'customer_id': customer_id,
+        'customer_id': customer_id
     }
 
     # Renderizar el template con el contexto
@@ -167,23 +143,46 @@ def update_customer(request, customer_id):
     # Obtener los datos del cliente a partir de su ID
     customer = db.child("Customers").child(customer_id).get().val()
 
-    # Imprimir los datos del cliente en la consola
-    #print(customer)
+    if request.method == 'POST':
+        # Obtener los nuevos datos del cliente del formulario de actualización
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phoneNumber = request.POST.get('phoneNumber')
+        service = request.POST.get('service')
+        income = request.POST.get('income')
+        address = request.POST.get('address')
+        sector = request.POST.get('sector')
+        businessType = request.POST.get('businessType')
+        niche = request.POST.get('niche')
+        areaOfInterest = request.POST.get('areaOfInterest')
+        budget = request.POST.get('budget')
+        time = request.POST.get('time')
 
-    form = EditCustomerForm(request.POST, instance=customer)
+        # Actualizar los datos del cliente en Firebase Realtime Database
+        data = {
+            'name': name,
+            'email': email,
+            'phoneNumber': phoneNumber,
+            'service': service,
+            'income': income,
+            'address': address,
+            'sector': sector,
+            'businessType': businessType,
+            'niche': niche,
+            'areaOfInterest': areaOfInterest,
+            'budget': budget,
+            'time': time
+        }
+        db.child("Customers").child(customer_id).update(data)
 
-    # Si el formulario es válido, actualizar los datos del cliente
-    if form.is_valid():
-        form.save()
-        messages.success(request, 'Cliente actualizado correctamente')
-        return redirect('clients')
+        # Redirigir al usuario a la página de detalles del cliente actualizado
+        return redirect('edit_customer', customer_id=customer_id)
 
-    # Si el formulario no es válido, renderizar el template con los datos del cliente
+    # Si el formulario no es válido o si es una solicitud GET, renderizar el template con los datos del cliente
     context = {
         'customer': customer,
-        'customer_id': customer_id,
+        'customer_id': customer_id
     }
-
     return render(request, 'edit_customer.html', context)
 
 @firebase_login_required

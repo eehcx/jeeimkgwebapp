@@ -1,18 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup | JEEIMKG</title>
-    <!--Icono de la página-->
-    <link rel="shortcut icon" href="https://jeeimkg-static.s3.us-west-1.amazonaws.com/images/ico/ico.png" type="image/x-icon">
-</head>
-<body>
-    <form method="post">
+{% extends 'auth_base.html' %}
+{% load static %}
+
+    {% block title %}Signup | JEEIMKG{% endblock %}
+    {% block css %}
+        <link rel="stylesheet" type="text/css" href="{% static '/css/signup.css' %}">
+        <!-- Firebase App (el primer script debe ir siempre primero) -->
+        <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js"></script>
+        <!-- Firebase Authentication -->
+        <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js"></script>
+        <!-- Firebase Firestore -->
+        <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js"></script>
+    {% endblock %}
+
+{% block content %}
+    <form method="post" id="login-form">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Sign Up</button>
+        <div class="login-box">
+            <h2>jeeimkg create user</h2>
+            {{ form.as_p }}
+            <button type="submit">sign up</button>
+        </div>
     </form>
-</body>
-</html>
+{% endblock %}

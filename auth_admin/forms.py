@@ -4,9 +4,9 @@ from firebase_admin import credentials, auth, firestore, exceptions
 
 """| Esta función me registra mis usuarios y me los muestra en mi Sign Up |"""
 class FirebaseSignupForm(forms.Form):
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
-    password_confirm = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    email = forms.EmailField(label="", widget=forms.EmailInput(attrs={'id': 'email-input', 'class': 'feedback-input', 'placeholder':'Correo Electronico'}))
+    password = forms.CharField(label="", widget=forms.PasswordInput(attrs={'class': 'feedback-input', 'placeholder':'Contraseña'}))
+    password_confirm = forms.CharField(label="", widget=forms.PasswordInput(attrs={'class': 'feedback-input', 'placeholder':'Confirmar Contraseña'}))
 
     def clean(self):
         cleaned_data = super().clean()
