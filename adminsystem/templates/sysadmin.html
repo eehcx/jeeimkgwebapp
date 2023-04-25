@@ -31,6 +31,11 @@
             <i class="fi fi-sr-clock"></i>
             <span class="title"> <strong>En espera</strong> </span>
         </button>
+        <button id="btn-contacts" class="btn-admin-card">
+            <i class="fi fi-rr-globe"></i>
+            <span class="title"> <strong>Contacto por web</strong> </span>
+        </button>
+        <!-- 
         <button id="btn-services" class="btn-admin-card">
             <i class="fi fi-sr-tags"></i>
             <span class="title"> <strong>Servicios</strong> </span>
@@ -39,6 +44,7 @@
             <i class="fi fi-sr-comment"></i>
             <span class="title"> <strong>Opiniones</strong> </span>
         </button>
+        -->
     </div>
 </div>
 
@@ -94,15 +100,42 @@
         {% endfor %}
     </tbody>
 </table>
+<table class="table-content" id="contacts-table" style="display: none; width: 100%">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Telefono</th>
+            <th>E-mail</th>
+            <th>Mensaje</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for customer in contacts_data %}
+        <tr>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.phone }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.message }}</td>
+        </tr> 
+        {% endfor %}
+    </tbody>
+</table>
 
 <script>
     $("#btn-clients").click(function() {
         $("#clients-table").show();
         $("#pre-customers-table").hide();
+        $("#contacts-table").hide();
     });
     $("#btn-pre-customers").click(function() {
         $("#clients-table").hide();
+        $("#contacts-table").hide();
         $("#pre-customers-table").show();
+    });
+    $("#btn-contacts").click(function() {
+        $("#clients-table").hide();
+        $("#pre-customers-table").hide();
+        $("#contacts-table").show();
     });
 </script>
 {% endblock %}

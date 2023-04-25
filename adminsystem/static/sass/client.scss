@@ -22,47 +22,39 @@ body{
 }
 
 #expendable-data-table {
-    border-collapse: separate;
-    border-spacing: 0;
-    width: 100%;
-    margin-bottom: 2px;
-    border: 1px solid #dee2e6;
-    border-radius: 0.1rem;
-    th,
-    td {
-      padding: 1.8px;
-      //vertical-align: top;
-      align-items:center;
-      border-top: 1px solid #dee2e6;
-      i:hover {
-        color: #325dc8;
-        cursor: pointer;
-      }
-
-      a{
-        margin: 0%;
-        text-decoration: none;
-        color: #000;
-      }
-    }
-    th {
-      text-align: left;
-      font-size: 14px;
-    }
-    tbody tr {
-      font-size: 13px;
-    }
-    tbody tr:hover {
-      background-color: #f8f9fa;
-    }
-    // Agregar padding al contenedor y margin negativo al tbody
-    @media only screen and (min-width: 768px) {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  margin-bottom: 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 0.1rem;
+  th,
+  td {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-left: 1rem;
+    padding-right: 2.4rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+  }
+  th {
+    text-align: left;
+    font-size: 15px;
+  }
+  tbody tr {
+    font-size: 13px;
+  }
+  tbody tr:hover {
+    background-color: #f8f9fa;
+  }
+  // Agregar padding al contenedor y margin negativo al tbody
+  @media only screen and (min-width: 768px) {
       padding-left: 60px;
       tbody {
         margin-left: -60px;
       }
-    }
   }
+}
 
 a{
   display: inline-block;

@@ -27,15 +27,21 @@ def sysadmin(request):
     customers = db.child("Customers").get().val()
     customers = list(customers.values())
 
+    # Obtener todos los datos de la colección "contacts"
+    contacts = db.child("contacts").get().val()
+    contacts = list(contacts.values())
+
     pre_customers = db.child("Pre-Customers").get().val()
     pre_customers = list(pre_customers.values())
 
     # Invierte el orden de los datos en la lista
     customers_data = list(reversed(customers))[:15]
+    contacts_data = list(reversed(contacts))[:15]
     pre_customers_data = list(reversed(pre_customers))[:15]
 
     context = {
         'customers_data': customers_data,
+        'contacts_data': contacts_data,
         'pre_customers_data': pre_customers_data,
         'email': email
     }
@@ -58,40 +64,57 @@ def profile(request):
     return render(request, 'profile.html', context)
 
 @firebase_login_required
-def contactClient(request):
+def contactClient(request, start=0, end=10):
     email = request.session.get('email')
-    # Obtener todos los datos de la colección "Customers" en orden inverso
-    customers = db.child("Customers").get().val()
-    customers = list(customers.values())[::-1]
-
-    """
-    # Obtener todos los datos de la colección "Contacts"
-    contacts = db.child("contacts").get().val()
-    contacts = list(contacts.values())
-    """
 
     # Obtener todos los datos de la colección "Pre-Customers"
-    pre_customers = db.child("Pre-Customers").get().val()
-    pre_customers = list(pre_customers.values())
+    pre_customers = db.child("Pre-Customers").get()
+    
+    # Crear una lista para almacenar los datos de los clientes
+    pre_customers_data = []
 
-    # Crear una lista para almacenar los nombres de los últimos 4 clientes
-    last_customers = []
+    for pre_customer in pre_customers.each():
+        data = pre_customer.val()
+        data['id'] = pre_customer.key()
+        pre_customers_data.append(data)
 
-    # Iterar sobre los últimos 4 clientes y agregar sus nombres a la lista
-    for i in range(4):
-        if i >= len(customers):
-            break
-        last_customers.append(customers[i]['name'])
+    # Invertir la lista de datos de los clientes
+    pre_customers_data.reverse()
 
-    # Pasar los nombres de los últimos 4 clientes, los datos de la colección "Contacts" y los datos de la colección "Pre-Customers" al contexto
     context = {
-        'last_customers': last_customers,
         #'contacts': contacts,
-        'pre_customers': pre_customers,
+        'pre_customers_data': pre_customers_data[start:end],
+        'start': start,
+        'end': end,
         'email': email
     }
 
     return render(request, 'inbox.html', context)
+
+@firebase_login_required
+def deletePreCustomer(request, pre_customer_id):
+    # Eliminar el pre-customer de la base de datos
+    db.child("Pre-Customers").child(pre_customer_id).remove()
+
+    # Redireccionar a la página de listado de pre-customers
+    return redirect('contactClient')
+
+
+def edit_contact(request, pre_customers_id):
+    # Obtener los datos del cliente a partir de su ID
+    contact = db.child("Pre-Customers").child(pre_customers_id).get().val()
+
+    # Imprimir los datos del cliente en la consola
+    #print(customer)
+
+    # Pasar los datos del cliente al contexto
+    context = {
+        'contact': contact,
+        'pre_customers_id': pre_customers_id
+    }
+
+    # Renderizar el template con el contexto
+    return render(request, 'edit_contact.html', context)
 
 @firebase_login_required
 def clients(request, start=0, end=10):

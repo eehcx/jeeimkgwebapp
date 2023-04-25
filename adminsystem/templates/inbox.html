@@ -19,144 +19,41 @@
 {% endblock %}
 
 {% block content %}
-<div class="tables-container">
-    <table id="expendable-data-table" class="table display nowrap" style="width:100%">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Telefono</th>
-                <th>Tipo Negocio</th>
-                <th>Nicho</th>
-                <th>Presupuesto</th>
-                <th>Tamaño</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for pre_customer in pre_customers %}
-            <tr>
+<table  id="expendable-data-table" class="table display nowrap" style="width:100%">
+    <thead>
+        <tr>
+            <th style="display: none;">ID</th>
+            <th>Nombre</th>
+            <th>Telefono</th>
+            <th>Tipo Negocio</th>
+            <th>Nicho</th>
+            <th>Presupuesto</th>
+            <th>Tamaño</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pre_customer in pre_customers_data %}
+        <tr>
+            <td style="display: none;">{{ pre_customer.id }}</td>
             <td>{{ pre_customer.nombre }}</td>
             <td>{{ pre_customer.numero }}</td>
             <td>{{ pre_customer.tipoNegocio }}</td>
             <td>{{ pre_customer.nicho }}</td>
             <td>{{ pre_customer.presupuesto }}</td>
             <td>{{ pre_customer.tamano }}</td>
-            </tr> 
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
-<div class="container">
-    <div class="container-inbox">
-        <div class="card-main">
-            <div class="inbox-header">
-                <h3 class="inbox-title"><strong>Clientes Potenciales</strong></h3>
-                <p class="date-title"></p>
-            </div>
-            <div class="inbox-stats">
-                <div class="stats">
-                    <p class="stats-number"> <strong>26</strong> </p>
-                    <p class="stats-title">Convertidos</p>
-                </div>
-                <div class="stats">
-                    <p class="stats-number"> <strong>50</strong> </p>
-                    <p class="stats-title">Sin terminar</p>
-                </div>
-                <div class="stats">
-                    <p class="stats-number"> <strong>76</strong> </p>
-                    <p class="stats-title">Total mensajes</p>
-                </div>
-            </div>
-        </div>
-    
-        <div class="card-customers">
-            <div class="customers-header">
-                <div class="customers-title"> <strong>Ultimos clientes</strong></div>
-            </div>
-            <table id="customers-table">
-                {% for customer in last_customers %}
-                    <tr>
-                        <td>{{ customer }}</td>
-                    </tr>
-                {% endfor %}
-            </table>
-        </div>
-    </div>
+            <td>
+                <a href="{% url 'deletePreCustomer' pre_customer.id %}">
+                    <i class="fi fi-rr-trash"></i>
+                </a>
+            </td>
+        </tr> 
+        {% endfor %}
+    </tbody>
+</table>
 
-
-
-    <button class="btn-add">
-        <i class="fi fi-sr-globe"></i>
-        <span class="title"> <strong>Contacto por Página web</strong> </span>
-    </button>
-
-    <button class="btn-phone">
-        <i class="fi fi-brands-whatsapp"></i>
-        <span class="title"> <strong>Contacto por Whatsapp</strong> </span>
-    </button>
-</div>
-
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <p id="generated-code"></p>
-    </div>
-</div>
-
-<!-- Agregar este script para detectar cambios en la base de datos y actualizar la tabla -->
-<script>
-    // Obtener una referencia a la tabla
-    var table = document.getElementById("customers-table");
-
-    // Obtener una referencia a la base de datos
-    var db = firebase.database();
-
-    // Escuchar cambios en la colección "Customers"
-    db.ref("Customers").on("value", function(snapshot) {
-        // Obtener los datos de los clientes en orden inverso
-        var customers = snapshot.val();
-        customers = Object.values(customers).reverse();
-
-        // Limpiar el contenido de la tabla
-        table.innerHTML = "";
-
-        // Iterar sobre los últimos 4 clientes y agregar sus nombres a la tabla
-        for (var i = 0; i < 4; i++) {
-            if (i >= customers.length) {
-                break;
-            }
-            var row = table.insertRow(-1);
-            var cell = row.insertCell(0);
-            cell.innerHTML = customers[i].name;
-        }
-    });
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        let date = new Date();
-        let month = date.toLocaleString('default', { month: 'long' });
-        month = month.charAt(0).toUpperCase() + month.slice(1);
-        let day = date.getDate();
-        document.querySelector('.date-title').innerHTML = `${month}, ${day}`;
-    });
-</script>
-
-<script>
-    var modal = document.getElementById("myModal");
-    var btn = document.querySelector(".btn-url");
-    var span = document.getElementsByClassName("close")[0];
-    
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
-    
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-    
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-</script>
+<div class="btn-view-more">
+    <a href="{% url 'contactClient' 0 10 %}" class="button"><i class="fi fi-rr-arrow-left"></i></a>
+    <a href="{% url 'contactClient' start|add:10 end|add:10 %}" class="button"><i class="fi fi-rr-arrow-right"></i></a>
+  </div>
 {% endblock %}
