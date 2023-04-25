@@ -67,6 +67,18 @@ a{
   }
 }
 
+.edit{
+  &:hover{
+    color: #325dc8;
+  }
+}
+
+.delete{
+  &:hover{
+    color: #dc3545;
+  }
+}
+
 .btn-add{
   background-color: #090909;
   color: #ffffff;

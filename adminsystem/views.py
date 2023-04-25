@@ -117,7 +117,7 @@ def edit_contact(request, pre_customers_id):
     return render(request, 'edit_contact.html', context)
 
 @firebase_login_required
-def clients(request, start=0, end=10):
+def clients(request, start=0, end=7):
     email = request.session.get('email')
     # Obtener todos los datos de la colección "Customers"
     customers = db.child("Customers").get()
@@ -143,6 +143,14 @@ def clients(request, start=0, end=10):
     }
 
     return render(request, 'clients.html', context)
+
+@firebase_login_required
+def deleteCustomer(request, customer_id):
+    # Eliminar el pre-customer de la base de datos
+    db.child("Customers").child(customer_id).remove()
+
+    # Redireccionar a la página de listado de pre-customers
+    return redirect('clients')
 
 @firebase_login_required
 def edit_customer(request, customer_id):

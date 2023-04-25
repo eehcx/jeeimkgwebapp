@@ -52,8 +52,11 @@
       <td>{{ customer.businessType }}</td>
       <td>{{ customer.email }}</td>
       <td>
-        <a href="{% url 'edit_customer' customer.id %}">
+        <a class="edit" href="{% url 'edit_customer' customer.id %}">
             <i class="fi fi-rr-edit"></i>
+        </a>
+        <a class="delete" href="{% url 'deleteCustomer' customer.id %}">
+          <i class="fi fi-rr-trash"></i>
         </a>
     </td>
     </tr> 
@@ -62,8 +65,8 @@
 </table>
 
 <div class="btn-view-more">
-  <a href="{% url 'clients' 0 10 %}" class="button"><i class="fi fi-rr-arrow-left"></i></a>
-  <a href="{% url 'clients' start|add:10 end|add:10 %}" class="button"><i class="fi fi-rr-arrow-right"></i></a>
+  <a href="{% url 'clients' 0 7 %}" class="button"><i class="fi fi-rr-arrow-left"></i></a>
+  <a href="{% url 'clients' start|add:7 end|add:7 %}" class="button"><i class="fi fi-rr-arrow-right"></i></a>
 </div>
 
 <a class="btn-add"  href="{% url 'inicia' %}">
