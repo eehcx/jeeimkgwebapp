@@ -12,21 +12,20 @@
     {% endblock %}
 
 {% block content %}
-  <form method="POST" id="login-form" action="{% url 'login' %}">
-    {% csrf_token %}
-    <div class="login-box">
-      <h2>jeeimkg sysadmin</h2>
-      <div class="user-box">
-        <input type="email" name="email" required>
-        <label for="email">Email:</label>
-      </div>
-      <div class="user-box">
-        <input type="password" name="password" required>
-        <label for="password">Password:</label>
-      </div>
-      <input type="hidden" name="custom_token" id="custom_token" value="{{ custom_token }}">
-      <!--<a class="btn-two-f" href="{% url 'two_factor_login' %}">dos factores</a>-->
-      <button type="submit">LOGIN</button>
-    </div>
-  </form>    
+    <form method="POST" id="two-factor-login-form">
+        {% csrf_token %}
+        <div class="login-box">
+            <h2>Inicio de sesión de dos factores</h2>
+            <div class="user-box">
+            <input type="email" name="email" required>
+            <label for="email">Email:</label>
+            </div>
+            <div class="user-box">
+            <input type="password" name="password" required>
+            <label for="password">Password:</label>
+            </div>
+            <a  class="btn-two-f"  href="{% url 'login' %}">Regresar</a>
+            <button type="submit">Continuar</button>
+        </div>
+    </form>    
 {% endblock %}

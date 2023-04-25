@@ -84,3 +84,18 @@ h2 {
   [type="submit"]:hover {
     background: #cc1517;
   }
+
+
+a.btn-two-f{
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 7px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: 700;
+}
+
+a.btn-two-f:hover{
+  color: #cc1517;
+  transition: all 0.5s ease-in-out;
+}

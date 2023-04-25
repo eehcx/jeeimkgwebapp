@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import user_passes_test
 from .forms import EditCustomerForm
 import os, firebase_admin, requests, pyrebase
-from firebase_admin import credentials, firestore, db
+from firebase_admin import credentials, firestore, db, auth
 from django.http import HttpResponse
 from django.contrib import messages
 from django.urls import reverse
@@ -57,6 +57,21 @@ def config(request):
 def profile(request):
     email = request.session.get('email')
 
+    if request.method == 'POST':
+        current_password = request.POST.get('password')
+        new_password = request.POST.get('new-password')
+        confirm_password = request.POST.get('confirm-password')
+
+        try:
+            user = auth.sign_in_with_email_and_password(email, current_password)
+            if new_password == confirm_password:
+                auth.update_password(user['idToken'], new_password)
+                messages.success(request, 'Contraseña actualizada exitosamente')
+            else:
+                messages.error(request, 'Las contraseñas no coinciden')
+        except:
+            messages.error(request, 'Error al actualizar la contraseña')
+    
     context = {
         'email': email
     }

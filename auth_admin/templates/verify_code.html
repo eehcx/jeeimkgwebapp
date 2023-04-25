@@ -1,0 +1,27 @@
+{% extends 'auth_base.html' %}
+{% load static %}
+    {% block title %}Login | JEEIMKG{% endblock %}
+    {% block css %}
+        <link rel="stylesheet" type="text/css" href="{% static '/css/login.css' %}">
+        <!-- Firebase App (el primer script debe ir siempre primero) -->
+        <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js"></script>
+        <!-- Firebase Authentication -->
+        <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js"></script>
+        <!-- Firebase Firestore -->
+        <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js"></script>
+    {% endblock %}
+
+    {% block content %}
+    <form method="POST" id="verify-code-form">
+      {% csrf_token %}
+      <div class="login-box">
+        <h2>Verificación de código</h2>
+        <div class="user-box">
+          <input type="text" name="verification_code" required>
+          <label for="verification_code">Código de verificación:</label>
+        </div>
+        <a class="btn-back" href="{% url 'verify_phone_number' %}">Regresar</a>
+        <button type="submit">Continuar</button>
+      </div>
+    </form>
+  {% endblock %}
