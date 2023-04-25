@@ -9,14 +9,13 @@
     <script type="text/javascript" src="{% static '/js/validations.js' %}"></script>
     {% endblock %}
 
-
 {% block content %}
 <main>
     <div class="background"></div>
     <form onsubmit="return validateForm()" method="post" class="form-content">
         {% csrf_token %}
         <h1>Bienvenido a casa</h1>
-        <p>Termina tu registro final, requerimos de la siguiente información para calcular el precio de tu servicio </p>
+        <p>Completa tu registro final ingresando tu información. Ten en cuenta que algunos campos no podrán modificarse más adelante, así que escribe con cuidado y verifica que la información ingresada sea correcta antes de enviarla. ¡Gracias por registrarte! </p>
         {{ form.name }}
         {{ form.email }}
         {{ form.phoneNumber }}
