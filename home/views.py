@@ -16,7 +16,7 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             # Realiza una solicitud POST a la API REST para guardar los datos de contacto
-            response = requests.post('https://restapi-jeeimkg.onrender.com/contacts', json=form.cleaned_data)
+            response = requests.post('http://localhost:4000/contacts', json=form.cleaned_data)
             
             if response.status_code == 200:
                 return redirect('index')

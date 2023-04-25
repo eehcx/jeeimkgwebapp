@@ -83,7 +83,7 @@ def starthere(request):
         }
 
         # Hacer una solicitud POST a tu API REST con los datos del formulario
-        url = 'https://restapi-jeeimkg.onrender.com/customers'
+        url = 'http://localhost:4000/customers'
         response = requests.post(url, json=datos_empresa)
 
         if response.ok:
