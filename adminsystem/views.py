@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import user_passes_test
 from .forms import EditCustomerForm
 import os, firebase_admin, requests, pyrebase
-from firebase_admin import credentials, firestore, db, auth
+from firebase_admin import credentials, firestore, db, auth as firebase_admin_auth
 from django.http import HttpResponse
 from django.contrib import messages
 from django.urls import reverse
@@ -58,19 +58,20 @@ def profile(request):
     email = request.session.get('email')
 
     if request.method == 'POST':
-        current_password = request.POST.get('password')
-        new_password = request.POST.get('new-password')
-        confirm_password = request.POST.get('confirm-password')
+        current_password = request.POST['password']
+        new_password = request.POST['new-password']
+        confirm_password = request.POST['confirm-password']
 
-        try:
-            user = auth.sign_in_with_email_and_password(email, current_password)
-            if new_password == confirm_password:
-                auth.update_password(user['idToken'], new_password)
-                messages.success(request, 'Contraseña actualizada exitosamente')
-            else:
-                messages.error(request, 'Las contraseñas no coinciden')
-        except:
-            messages.error(request, 'Error al actualizar la contraseña')
+        if new_password == confirm_password:
+            try:
+                email = request.session['email']
+                user = firebase_admin_auth.get_user_by_email(email)
+                user.update_password(new_password)
+                messages.success(request, 'Contraseña actualizada con éxito')
+            except:
+                messages.error(request, 'Error al actualizar la contraseña')
+        else:
+            messages.error(request, 'Las contraseñas no coinciden')
     
     context = {
         'email': email
